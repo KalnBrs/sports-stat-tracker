@@ -2,6 +2,7 @@ import tkinter as tk
 import json
 from tkinter import messagebox
 import ttkbootstrap as ttk
+from collections import deque
 
 #For AV Project
 #Search for who is on a team
@@ -837,6 +838,7 @@ try:
         coach_num = self.entry_coach.get()
         coach_num_trimed = coach_num.strip()
         coach_num_list = coach_num.split()
+        print(coach_num_trimed)
 
         #checks if the team is in the data
         if coach_team_trimed == "":
@@ -846,6 +848,7 @@ try:
           for x in coach_num_list:
             add_player(coach_team_trimed, x)
           messagebox.showinfo(title="Message", message="Players added")
+          self.destroy()
         #If team not in data, it will show a window with the error and clear the team entry
         elif coach_team_trimed not in data["teams"]:
           messagebox.showerror(title="Error", message="Team not found")
@@ -853,6 +856,58 @@ try:
         else:
           #No input
           print("error 11")
+      
+
+  class Coach_Choose(tk.Toplevel):
+    def __init__(self):
+      super().__init__()
+      self.title("Coach Choose")
+      self.geometry("500x300")
+      self.minsize(500, 300)
+      self.label = ttk.Label(self, text="Do you want to add to a team or look up a team").pack()
+      buttonframe = ttk.Frame(self)
+      buttonframe.columnconfigure(0, weight=1)
+      buttonframe.columnconfigure(1, weight=1)
+
+      btn1 = ttk.Button(buttonframe, text="Add", command=self.add)
+      btn1.grid(row=1, column=0, sticky=tk.W+tk.E)
+      btn2 = ttk.Button(buttonframe, text="Look Up", command=self.look_up)
+      btn2.grid(row=1, column=1, sticky=tk.W+tk.E)
+
+      buttonframe.pack(fill="x")
+
+    def add(self):
+      extrawindow = coach_window()
+
+    def look_up(self):
+      extrawindow = Coach_Look_Up()
+    
+
+  class Coach_Look_Up(tk.Toplevel):
+    def __init__(self):
+      super().__init__()
+      self.title("Coach Choose")
+      self.geometry("500x300")
+      self.minsize(500, 300)
+      self.label = ttk.Label(self, text="What team do you want to search for:").pack()
+      self.entry = ttk.Entry(self)
+      self.entry.pack()
+      self.button = ttk.Button(self, text="Search", command=self.look_up).pack()
+
+    def look_up(self):
+      team_set = self.entry.get().lower().strip()
+      check_team = check_team_one(team_set)
+      if check_team is True:
+        with open("data.json", "r") as f:
+          data = json.load(f)
+        keys = []
+        for key in data["teams"][team_set].keys():
+          keys.append(key + ",")
+        keys.pop(0)
+        messagebox.showinfo(title="Players", message=keys)
+          
+
+
 
   #Creates the window when class is called
   def create_window1():
@@ -862,7 +917,7 @@ try:
     extrawindow = search_window()
 
   def coach_window_button():
-    extrawindow = coach_window() 
+    extrawindow =  Coach_Choose()
 
   #When close buttion is clicked then it will close the window
   def on_exit():
