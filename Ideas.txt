@@ -1,10 +1,10 @@
-#For AV Project
-#Search for who is on a team
-#   Iterate through Dictionary and add Numbers to list
-#   Print all Numbers
-#Automaticaly clear data with button
-#  Teams 
-#    Write to file
-#  Numbers
-#    Iterate though teams and write into json
-#On start choose 
+For AV Project
+Search for who is on a team
+   Iterate through Dictionary and add Numbers to list
+   Print all Numbers
+Automaticaly clear data with button
+  Teams 
+    Write to file
+  Numbers
+    Iterate though teams and write into json
+On start choose 

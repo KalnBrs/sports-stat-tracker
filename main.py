@@ -4,17 +4,6 @@ from tkinter import messagebox
 import ttkbootstrap as ttk
 from collections import deque
 
-#For AV Project
-#Search for who is on a team
-#   Iterate through Dictionary and add Numbers to list
-#   Print all Numbers
-#Automaticaly clear data with button
-#  Teams 
-#    Write to file
-#  Numbers
-#    Iterate though teams and write into json
-#On start choose 
-
 try:
   #Function to use for Procedure
   #Checks if player is in data
