@@ -18,9 +18,8 @@ try:
             check_data_loop = False
             return True
           else:
-            check_data_loop = False
             add_player(team, player)
-            return True
+
     else:
       messagebox.showerror(title="Error", message="Please enter a valid number")
 
