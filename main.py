@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import *
 import json
 from tkinter import messagebox
 import ttkbootstrap as ttk
@@ -266,6 +267,24 @@ try:
     with open("data.json", "w") as f:
       f.write(json.dumps(data, indent=2))
 
+  def add_color(color, colorValue):
+    with open("options.json", "r") as f:
+      optionsList = json.load(f)
+
+    optionsList[options].append(color, 0)
+    optionsList[options][color] = colorValue
+
+    with open("options.json", "w") as f:
+      f.write(json.dumps(optionsList, indent=2))
+
+  def change_color(color) -> str:
+    with open("options.json", "r") as f:
+      colors = json.load(f)
+
+    if color in colors["color-values"]:
+      return colors["color-values"][color]
+    else:
+      return color
 
   #Creates the window for when game starts
   class game_start(tk.Toplevel):
@@ -322,6 +341,15 @@ try:
       buttonframe.columnconfigure(0, weight=1)
       buttonframe.columnconfigure(1, weight=1)
 
+      self.clicked = StringVar()
+      self.clicked.set("None")
+
+      with open("options.json", "r") as f:
+        data = json.load(f)
+
+      self.drop = OptionMenu(self, self.clicked, *data["options"])
+      self.drop.pack(pady = 10)
+
       btn1 = ttk.Button(buttonframe, text=team_home, command=self.create_window_Home)
       btn1.grid(row=0, column=0, sticky=tk.W+tk.E)
       btn2 = ttk.Button(buttonframe, text=team_away, command=self.create_window_Away)
@@ -339,23 +367,24 @@ try:
       self.destroy()
 
     def create_window_Home(self):
-      extrawindow = team_frame_home()
+      extrawindow = team_frame_home(change_color(self.clicked.get()))
 
     def create_window_Away(self):
-      extrawindow = team_frame_away()
+      extrawindow = team_frame_away(change_color(self.clicked.get()))
 
 
   #Creates the window for the home team
   class team_frame_home(tk.Toplevel):
-    def __init__ (self):
+    def __init__ (self, color):
       super().__init__()
       self.title(team_home)
       self.geometry("500x135")
       self.minsize(500, 135)
+      self.configure(background = color)
       self.label_num_home = ttk.Label(self, text="Enter the number of the player and pick the stat").pack()
-      self.entry_num_home = ttk.Entry(self)
+      self.entry_num_home = ttk.Entry(self) 
       self.entry_num_home.pack()
-      global  num_home_frame
+      global num_home_frame
       num_home_frame = self.entry_num_home.get()
       buttonframe = ttk.Frame(self)
       buttonframe.columnconfigure(0, weight=1)
@@ -462,11 +491,12 @@ try:
 
   #Creates the window for the away team
   class team_frame_away(tk.Toplevel):
-    def __init__ (self):
+    def __init__ (self, color):
       super().__init__()
       self.title(team_away)
       self.geometry("500x135")
       self.minsize(500, 135)
+      self.configure(background = color)
       self.label_num_away = ttk.Label(self, text="Enter the number number of the player and pick the stat").pack()
       self.entry_num_away = ttk.Entry(self)
       self.entry_num_away.pack()
@@ -695,10 +725,9 @@ try:
         messagebox.showerror(title="Error", message="Team not found")
 
 
-
   #Creates the stat window
   class stat_window(tk.Toplevel):
-    def __init__(self):
+    def __init__(self, color):
       super().__init__()
       self.title("Stats")
       self.geometry("530x125")
@@ -895,6 +924,17 @@ try:
         messagebox.showinfo(title="Players", message=keys)
           
 
+  class Dev_Window(tk.Toplevel):
+    def __init__(self):
+      super().__init__()
+      self.title("Dev Window")
+      self.geometry("500x500")
+      self.minsize(500, 500)
+      # Clear Json
+      # Add to options 
+      # Take away from options 
+      # Add passwords 
+      # Subtract passwords
 
 
   #Creates the window when class is called
@@ -912,13 +952,18 @@ try:
     if messagebox.askyesno(title="Exit", message="Are you sure you want to exit?"):
       window.destroy()
 
-  #Creates the window at the start and sets theme
+  def dev_window():
+    #Login window
+    devWindow = Dev_Window()
+
+  # Creates the window at the start and sets theme
   window = ttk.Window(themename = 'darkly')
   window.title("Start")
-  window.geometry("350x240")
-  window.minsize(350, 240)
+  window.geometry("350x260")
+  window.minsize(350, 260)
   label_start = ttk.Label(text="Welcome to the Basketball Stat Tracker", style="Label").pack(padx=10, pady=(10, 0))
   label_start_ask = ttk.Label(text="Do you want to start or search for a player or team?", style="Label").pack(padx=10, pady=10)
+  
   buttonframe = ttk.Frame(window)
   buttonframe.columnconfigure(0, weight=1)
   buttonframe.columnconfigure(1, weight=1)
@@ -932,7 +977,16 @@ try:
 
   label_coach = ttk.Label(text="Click here if you want to add your teams roster:").pack(padx=10, pady=10)
   button_coach = ttk.Button(window, text="Coach", command=coach_window_button).pack(padx=10)
-  button_exit = ttk.Button(window, text="Exit", command=on_exit).pack(padx=10, pady=10)
+
+  buttonframe = ttk.Frame(window)
+  buttonframe.columnconfigure(0, weight=1)
+
+  button_exit = ttk.Button(buttonframe, text="Exit", command=on_exit)
+  button_exit.grid(row=0, column=0, padx=10, pady=10, sticky=tk.W+tk.E)
+  button_dev = ttk.Button(buttonframe, text="Dev", command=dev_window)
+  button_dev.grid(row=0, column=1, padx=10, pady=10, sticky=tk.W+tk.E)
+
+  buttonframe.pack(fill="x", padx=10, pady=10)
 
   window.mainloop()
   
