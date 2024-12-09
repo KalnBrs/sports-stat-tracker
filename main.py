@@ -939,10 +939,13 @@ try:
       super().__init__()
       self.title("Stats")
       self.geometry("500x500")
-      self.minsize(500, 500)
+      self.minsize(200, 350)
 
-      self.teamHome = StringVar().set(team_home)
-      self.teamAway = StringVar().set(team_away)
+      self.teamHome = StringVar()
+      self.teamHome.set(team_home)
+
+      self.teamAway = StringVar()
+      self.teamAway.set(team_away)
 
       self.twoMadeHome = StringVar()
       self.twoMissedHome = StringVar()
@@ -970,6 +973,17 @@ try:
       self.freeThrowsMissedAway = StringVar()
       self.pointsAway = StringVar()
 
+
+      #Title
+      titleFrame = ttk.Frame(self)
+      titleFrame.columnconfigure(0, weight=1)
+
+      self.homeTeamLabel = ttk.Label(titleFrame, text=self.teamHome.get()).grid(column=0, row=0, padx=15)
+      self.awayTeamLabel = ttk.Label(titleFrame, text=self.teamAway.get()).grid(column=1, row=0, padx=15)
+
+      titleFrame.pack(pady=(10, 0))
+
+
       statsFrame = ttk.Frame(self)
       statsFrame.columnconfigure(0, weight=1)
       statsFrame.columnconfigure(1, weight=1)
@@ -983,82 +997,98 @@ try:
       statsFrame.columnconfigure(9, weight=1)
       statsFrame.columnconfigure(10, weight=1)
       statsFrame.columnconfigure(11, weight=1)
+      statsFrame.columnconfigure(12, weight=1)
 
       #Home Team
       self.twoHH = ttk.Label(statsFrame, text="Reload")
-      self.twoHH.grid(column=0, row=0)
+      self.twoHH.grid(column=0, row=1, sticky=tk.E)
 
       self.twoMH = ttk.Label(statsFrame, text="Reload")
-      self.twoMH.grid(column=0, row=1)
+      self.twoMH.grid(column=0, row=2, sticky=tk.E)
 
       self.threeHH = ttk.Label(statsFrame, text="Reload")
-      self.threeHH.grid(column=0, row=2)
+      self.threeHH.grid(column=0, row=3, sticky=tk.E)
 
       self.threeMH = ttk.Label(statsFrame, text="Reload")
-      self.threeMH.grid(column=0, row=3)
+      self.threeMH.grid(column=0, row=4, sticky=tk.E)
 
       self.rebH = ttk.Label(statsFrame, text="Reload")
-      self.rebH.grid(column=0, row=4)
+      self.rebH.grid(column=0, row=5, sticky=tk.E)
 
       self.turnH = ttk.Label(statsFrame, text="Reload")
-      self.turnH.grid(column=0, row=5)
+      self.turnH.grid(column=0, row=6, sticky=tk.E)
 
       self.stealH = ttk.Label(statsFrame, text="Reload")
-      self.stealH.grid(column=0, row=6)
+      self.stealH.grid(column=0, row=7, sticky=tk.E)
 
       self.assistH = ttk.Label(statsFrame, text="Reload")
-      self.assistH.grid(column=0, row=7)
+      self.assistH.grid(column=0, row=8, sticky=tk.E)
 
       self.blockH = ttk.Label(statsFrame, text="Reload")
-      self.blockH.grid(column=0, row=8)
+      self.blockH.grid(column=0, row=9, sticky=tk.E)
 
       self.ftHH = ttk.Label(statsFrame, text="Reload")
-      self.ftHH.grid(column=0,row=9)
+      self.ftHH.grid(column=0,row=10, sticky=tk.E)
 
       self.ftMH = ttk.Label(statsFrame, text="Reload")
-      self.ftMH.grid(column=0,row=10)
+      self.ftMH.grid(column=0,row=11, sticky=tk.E)
 
       self.pointH = ttk.Label(statsFrame, text="Reload")
-      self.pointH.grid(column=0,row=11)
+      self.pointH.grid(column=0,row=12, sticky=tk.E)
 
       #Away Team
       self.twoHA = ttk.Label(statsFrame, text="Reload")
-      self.twoHA.grid()
+      self.twoHA.grid(column=2, row=1, sticky=tk.W)
 
       self.twoMA = ttk.Label(statsFrame, text="Reload")
-      self.twoMA.grid()
+      self.twoMA.grid(column=2, row=2, sticky=tk.W)
 
       self.threeHA = ttk.Label(statsFrame, text="Reload")
-      self.threeHA.grid()
+      self.threeHA.grid(column=2, row=3, sticky=tk.W)
 
       self.threeMA = ttk.Label(statsFrame, text="Reload")
-      self.threeMA.grid()
+      self.threeMA.grid(column=2, row=4, sticky=tk.W)
 
       self.rebA = ttk.Label(statsFrame, text="Reload")
-      self.rebA.grid()
+      self.rebA.grid(column=2, row=5, sticky=tk.W)
 
       self.turnA = ttk.Label(statsFrame, text="Reload")
-      self.turnA.grid()
+      self.turnA.grid(column=2, row=6, sticky=tk.W)
 
       self.stealA = ttk.Label(statsFrame, text="Reload")
-      self.stealA.grid()
+      self.stealA.grid(column=2, row=7, sticky=tk.W)
 
       self.assistA = ttk.Label(statsFrame, text="Reload")
-      self.assistA.grid()
+      self.assistA.grid(column=2, row=8, sticky=tk.W)
 
       self.blockA = ttk.Label(statsFrame, text="Reload")
-      self.blockA.grid()
+      self.blockA.grid(column=2, row=9, sticky=tk.W)
 
       self.ftHA = ttk.Label(statsFrame, text="Reload")
-      self.ftHA.grid()
+      self.ftHA.grid(column=2, row=10, sticky=tk.W)
 
       self.ftMA = ttk.Label(statsFrame, text="Reload")
-      self.ftMA.grid()
+      self.ftMA.grid(column=2, row=11, sticky=tk.W)
 
       self.pointA = ttk.Label(statsFrame, text="Reload")
-      self.pointA.grid()
+      self.pointA.grid(column=2, row=12, sticky=tk.W)
 
-      statsFrame.pack(fill="x")
+      self.twoMade = ttk.Label(statsFrame, text=": Two point made :").grid(column=1, row=1)
+      self.twoMade = ttk.Label(statsFrame, text=": Two point missed :").grid(column=1, row=2)
+      self.twoMade = ttk.Label(statsFrame, text=": Three point made :").grid(column=1, row=3)
+      self.twoMade = ttk.Label(statsFrame, text=": Three point missed :").grid(column=1, row=4)
+      self.twoMade = ttk.Label(statsFrame, text=": Rebounds :").grid(column=1, row=5)
+      self.twoMade = ttk.Label(statsFrame, text=": Turnovers :").grid(column=1, row=6)
+      self.twoMade = ttk.Label(statsFrame, text=": Steal :").grid(column=1, row=7)
+      self.twoMade = ttk.Label(statsFrame, text=": Assist :").grid(column=1, row=8)
+      self.twoMade = ttk.Label(statsFrame, text=": Block :").grid(column=1, row=9)
+      self.twoMade = ttk.Label(statsFrame, text=": Free throw made :").grid(column=1, row=10)
+      self.twoMade = ttk.Label(statsFrame, text=": Free throw missed :").grid(column=1, row=11)
+      self.twoMade = ttk.Label(statsFrame, text=": Total Points :").grid(column=1, row=12)
+
+      
+
+      statsFrame.pack(fill="x", anchor=CENTER, padx=10, pady=10)
 
       def set_variables():
         print("set")
@@ -1174,18 +1204,10 @@ try:
         self.pointA.config(text=self.pointsAway.get())
 
       self.reload = ttk.Button(self, text="Reload", command=set_variables).pack()
-
-
-
-
-      # Clear Json
-      # Add to options 
-      # Take away from options 
-      # Add passwords 
-      # Subtract passwords
-      
       self.mainloop()
 
+  class Dev_Window(tk.Toplevel):
+    
   #Creates the window when class is called
   def create_window1():
     extrawindow = game_start()
