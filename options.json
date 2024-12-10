@@ -1,0 +1,15 @@
+{
+  "options": [
+    "Red",
+    "Orange",
+    "Yellow",
+    "Green",
+    "Blue",
+    "Purple",
+    "Monona Grove Blue"
+  ],
+
+  "color-values": {
+    "Monona Grove Blue": "#78ADD5"
+  }
+}
