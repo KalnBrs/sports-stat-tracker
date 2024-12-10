@@ -15,7 +15,6 @@ try:
         with open("data.json", "r") as f:
           data = json.load(f)
           if player in data["teams"][team]:
-            print("data added")
             check_data_loop = False
             return True
           else:
@@ -228,10 +227,8 @@ try:
         return True
       elif teamH in data["teams"]:
         add_team(teamA) 
-        print("added away team")
       elif teamA in data["teams"]:
         add_team(teamH)
-        print("added home team")
       else:
         print("error 1") 
     with open("data.json", "w") as f:
@@ -865,7 +862,6 @@ try:
         coach_num = self.entry_coach.get()
         coach_num_trimed = coach_num.strip()
         coach_num_list = coach_num.split()
-        print(coach_num_trimed)
 
         #checks if the team is in the data
         if coach_team_trimed == "":
@@ -1091,7 +1087,6 @@ try:
       statsFrame.pack(fill="x", anchor=CENTER, padx=10, pady=10)
 
       def set_variables():
-        print("set")
         with open("data.json", "r") as f:
           data = json.load(f)
 
@@ -1207,7 +1202,49 @@ try:
       self.mainloop()
 
   class Dev_Window(tk.Toplevel):
-    
+    def __init__(self):
+      super().__init__()
+      self.title("Dev Window")
+      #Subject to change (when design finished)
+      self.geometry("500x500")
+      self.clearButton = ttk.Button(self, text="Reset Data (After Game)", command=self.clearData).pack()
+      # Add to options 
+      # Take away from options 
+      # Add passwords 
+      # Subtract passwords
+
+    def clearData(self): 
+      with open("data.json", "r") as f:
+        data = json.load(f)
+
+      my_team = {
+        "team_name": {
+          "player": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0     
+          }
+        }
+      }
+
+      data["teams"] = my_team
+
+      with open("data.json", "w") as f:
+        f.write(json.dumps(data, indent=2))
+      
+      self.mainloop()
+
   #Creates the window when class is called
   def create_window1():
     extrawindow = game_start()
