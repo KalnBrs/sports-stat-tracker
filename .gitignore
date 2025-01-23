@@ -1,2 +1,6 @@
-/Ignore
-data.json
+options.json
+/txt
+/Photoshop
+/__pycache__
+/Methods/__pycache__
+/Windows/__pycache__
