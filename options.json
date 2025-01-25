@@ -10,5 +10,28 @@
 
   "color-values": {
     "None": "#435058"
+  },
+
+  "statPick": {
+    "FG Made": 1,
+    "FG Missed": 2,
+    "FG %": 3,
+    "FG ratio": 4,
+    " -------": 0,
+    "3p Made": 5,
+    "3p Missed": 6,
+    "3p %": 7,
+    "3p ratio": 8,
+    "_-------": 0,
+    "FT Made": 9,
+    "FT Missed": 10,
+    "FT %": 11,
+    "FT ratio": 12,
+    "--------": 0,
+    "Rebound": 13,
+    "Turnover": 14,
+    "Steal": 15,
+    "Assist": 16,
+    "Block": 17
   }
 }

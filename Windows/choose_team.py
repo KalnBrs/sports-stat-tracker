@@ -45,7 +45,9 @@ class choose_team(tk.Toplevel):
     self.destroy()
 
   def create_window_Home(self):
+    gameData.homeColor = change_color(self.clicked.get())
     extrawindow = team_frame_home(change_color(self.clicked.get()))
 
   def create_window_Away(self):
+    gameData.awayColor = change_color(self.clicked.get())
     extrawindow = team_frame_away(change_color(self.clicked.get()))

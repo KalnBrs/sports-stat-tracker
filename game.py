@@ -4,7 +4,11 @@ class gameData():
     self.home_team = ""
     self.home_team_trimed = ""
     self.away_team = ""
-    self.away_team_trimed
+    self.away_team_trimed = ""
+    self.homeColor = ""
+    self.awayColor = ""
+    self.homeTimeLeft = 5
+    self.awayTimeLeft = 5
 
   def getHome():
     return self.team_home

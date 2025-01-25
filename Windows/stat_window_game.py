@@ -6,6 +6,7 @@ import ttkbootstrap as ttk
 from collections import deque
 from game import gameData
 from Methods.functions import *
+from Windows.photoshopDashboard import dashboard
 
 # Updating Stat Window
 class Stat_Window_Game(tk.Toplevel):
@@ -164,117 +165,127 @@ class Stat_Window_Game(tk.Toplevel):
 
     statsFrame.pack(fill="x", anchor=CENTER, padx=10, pady=10)
 
-    def set_variables():
-      with open("data.json", "r") as f:
-        data = json.load(f)
+    self.reload = ttk.Button(self, text="Reload", command=self.set_variables).pack()
 
-      twoMadeHomeInt = 0
-      twoMissedHomeInt = 0
-      threeMadeHomeInt = 0
-      threeMissedHomeInt = 0
-      reboundsHomeInt = 0
-      turnoversHomeInt = 0
-      stealHomeInt = 0
-      assistsHomeInt = 0
-      blocksHomeInt = 0
-      freeTrowsMadeHomeInt = 0
-      freeThrowsMissedHomeInt = 0
-      pointsHomeInt = 0
+    self.dash = ttk.Button(self, text="Photoshop Dashboard", command=self.openDash).pack()
 
-      twoMadeAwayInt = 0
-      twoMissedAwayInt = 0
-      threeMadeAwayInt = 0
-      threeMissedAwayInt = 0
-      reboundsAwayInt = 0
-      turnoversAwayInt = 0
-      stealAwayInt = 0
-      assistsAwayInt = 0
-      blocksAwayInt = 0
-      freeTrowsMadeAwayInt = 0
-      freeThrowsMissedAwayInt = 0
-      pointsAwayInt = 0
-
-      for x in data["teams"][gameData.team_home_trimed]:
-
-        twoMadeHomeInt += data["teams"][gameData.team_home_trimed][x]["1"]
-        twoMissedHomeInt += data["teams"][gameData.team_home_trimed][x]["2"]
-        threeMadeHomeInt += data["teams"][gameData.team_home_trimed][x]["3"]
-        threeMissedHomeInt += data["teams"][gameData.team_home_trimed][x]["4"]
-        reboundsHomeInt += data["teams"][gameData.team_home_trimed][x]["5"]
-        turnoversHomeInt += data["teams"][gameData.team_home_trimed][x]["6"]
-        stealHomeInt += data["teams"][gameData.team_home_trimed][x]["7"]
-        assistsHomeInt += data["teams"][gameData.team_home_trimed][x]["8"]
-        blocksHomeInt += data["teams"][gameData.team_home_trimed][x]["9"]
-        freeTrowsMadeHomeInt += data["teams"][gameData.team_home_trimed][x]["10"]
-        freeThrowsMissedHomeInt += data["teams"][gameData.team_home_trimed][x]["11"]
-        pointsHomeInt += data["teams"][gameData.team_home_trimed][x]["12"]
-
-      for x in data["teams"][gameData.team_away_trimed]:
-        twoMadeAwayInt += data["teams"][gameData.team_away_trimed][x]["1"]
-        twoMissedAwayInt += data["teams"][gameData.team_away_trimed][x]["2"]
-        threeMadeAwayInt += data["teams"][gameData.team_away_trimed][x]["3"]
-        threeMissedAwayInt += data["teams"][gameData.team_away_trimed][x]["4"]
-        reboundsAwayInt += data["teams"][gameData.team_away_trimed][x]["5"]
-        turnoversAwayInt += data["teams"][gameData.team_away_trimed][x]["6"]
-        stealAwayInt += data["teams"][gameData.team_away_trimed][x]["7"]
-        assistsAwayInt += data["teams"][gameData.team_away_trimed][x]["8"]
-        blocksAwayInt += data["teams"][gameData.team_away_trimed][x]["9"]
-        freeTrowsMadeAwayInt += data["teams"][gameData.team_away_trimed][x]["10"]
-        freeThrowsMissedAwayInt += data["teams"][gameData.team_away_trimed][x]["11"]
-        pointsAwayInt += data["teams"][gameData.team_away_trimed][x]["12"]
-
-
-      self.twoMadeHome.set(str(twoMadeHomeInt))
-      self.twoMissedHome.set(str(twoMissedHomeInt))
-      self.threeMadeHome.set(str(threeMadeHomeInt))
-      self.threeMissedHome.set(str(threeMissedHomeInt))
-      self.reboundsHome.set(str(reboundsHomeInt))
-      self.turnoversHome.set(str(turnoversHomeInt))
-      self.stealHome.set(str(stealHomeInt))
-      self.assistsHome.set(str(assistsHomeInt))
-      self.blocksHome.set(str(blocksHomeInt))
-      self.freeTrowsMadeHome.set(str(freeTrowsMadeHomeInt))
-      self.freeThrowsMissedHome.set(str(freeThrowsMissedHomeInt))
-      self.pointsHome.set(str(pointsHomeInt))
-
-      self.twoMadeAway.set(str(twoMadeAwayInt))
-      self.twoMissedAway.set(str(twoMissedAwayInt))
-      self.threeMadeAway.set(str(threeMadeAwayInt))
-      self.threeMissedAway.set(str(threeMissedAwayInt))
-      self.reboundsAway.set(str(reboundsAwayInt))
-      self.turnoversAway.set(str(turnoversAwayInt))
-      self.stealAway.set(str(stealAwayInt))
-      self.assistsAway.set(str(assistsAwayInt))
-      self.blocksAway.set(str(blocksAwayInt))
-      self.freeTrowsMadeAway.set(str(freeTrowsMadeAwayInt))
-      self.freeThrowsMissedAway.set(str(freeThrowsMissedAwayInt))
-      self.pointsAway.set(str(pointsAwayInt))
-
-      self.twoHH.config(text=self.twoMadeHome.get())
-      self.twoMH.config(text=self.twoMissedHome.get())
-      self.threeHH.config(text=self.threeMadeHome.get())
-      self.threeMH.config(text=self.threeMissedHome.get())
-      self.rebH.config(text=self.reboundsHome.get())
-      self.turnH.config(text=self.turnoversHome.get())
-      self.stealH.config(text=self.stealHome.get())
-      self.assistH.config(text=self.assistsHome.get())
-      self.blockH.config(text=self.blocksHome.get())
-      self.ftHH.config(text=self.freeTrowsMadeHome.get())
-      self.ftMH.config(text=self.freeThrowsMissedHome.get())
-      self.pointH.config(text=self.pointsHome.get())
-
-      self.twoHA.config(text=self.twoMadeAway.get())
-      self.twoMA.config(text=self.twoMissedAway.get())
-      self.threeHA.config(text=self.threeMadeAway.get())
-      self.threeMA.config(text=self.threeMissedAway.get())
-      self.rebA.config(text=self.reboundsAway.get())
-      self.turnA.config(text=self.turnoversAway.get())
-      self.stealA.config(text=self.stealAway.get())
-      self.assistA.config(text=self.assistsAway.get())
-      self.blockA.config(text=self.blocksAway.get())
-      self.ftHA.config(text=self.freeTrowsMadeAway.get())
-      self.ftMA.config(text=self.freeThrowsMissedAway.get())
-      self.pointA.config(text=self.pointsAway.get())
-
-    self.reload = ttk.Button(self, text="Reload", command=set_variables).pack()
+    
     self.mainloop()
+
+  def openDash(self):
+    dashWindow = dashboard()
+
+  def set_variables(self):
+    with open("data.json", "r") as f:
+      data = json.load(f)
+
+    twoMadeHomeInt = 0
+    twoMissedHomeInt = 0
+    threeMadeHomeInt = 0
+    threeMissedHomeInt = 0
+    reboundsHomeInt = 0
+    turnoversHomeInt = 0
+    stealHomeInt = 0
+    assistsHomeInt = 0
+    blocksHomeInt = 0
+    freeTrowsMadeHomeInt = 0
+    freeThrowsMissedHomeInt = 0
+    pointsHomeInt = 0
+
+    twoMadeAwayInt = 0
+    twoMissedAwayInt = 0
+    threeMadeAwayInt = 0
+    threeMissedAwayInt = 0
+    reboundsAwayInt = 0
+    turnoversAwayInt = 0
+    stealAwayInt = 0
+    assistsAwayInt = 0
+    blocksAwayInt = 0
+    freeTrowsMadeAwayInt = 0
+    freeThrowsMissedAwayInt = 0
+    pointsAwayInt = 0
+
+    for x in data["teams"][gameData.team_home_trimed]:
+
+      twoMadeHomeInt += data["teams"][gameData.team_home_trimed][x]["1"]
+      twoMissedHomeInt += data["teams"][gameData.team_home_trimed][x]["2"]
+      threeMadeHomeInt += data["teams"][gameData.team_home_trimed][x]["3"]
+      threeMissedHomeInt += data["teams"][gameData.team_home_trimed][x]["4"]
+      reboundsHomeInt += data["teams"][gameData.team_home_trimed][x]["5"]
+      turnoversHomeInt += data["teams"][gameData.team_home_trimed][x]["6"]
+      stealHomeInt += data["teams"][gameData.team_home_trimed][x]["7"]
+      assistsHomeInt += data["teams"][gameData.team_home_trimed][x]["8"]
+      blocksHomeInt += data["teams"][gameData.team_home_trimed][x]["9"]
+      freeTrowsMadeHomeInt += data["teams"][gameData.team_home_trimed][x]["10"]
+      freeThrowsMissedHomeInt += data["teams"][gameData.team_home_trimed][x]["11"]
+      pointsHomeInt += data["teams"][gameData.team_home_trimed][x]["12"]
+
+    for x in data["teams"][gameData.team_away_trimed]:
+      twoMadeAwayInt += data["teams"][gameData.team_away_trimed][x]["1"]
+      twoMissedAwayInt += data["teams"][gameData.team_away_trimed][x]["2"]
+      threeMadeAwayInt += data["teams"][gameData.team_away_trimed][x]["3"]
+      threeMissedAwayInt += data["teams"][gameData.team_away_trimed][x]["4"]
+      reboundsAwayInt += data["teams"][gameData.team_away_trimed][x]["5"]
+      turnoversAwayInt += data["teams"][gameData.team_away_trimed][x]["6"]
+      stealAwayInt += data["teams"][gameData.team_away_trimed][x]["7"]
+      assistsAwayInt += data["teams"][gameData.team_away_trimed][x]["8"]
+      blocksAwayInt += data["teams"][gameData.team_away_trimed][x]["9"]
+      freeTrowsMadeAwayInt += data["teams"][gameData.team_away_trimed][x]["10"]
+      freeThrowsMissedAwayInt += data["teams"][gameData.team_away_trimed][x]["11"]
+      pointsAwayInt += data["teams"][gameData.team_away_trimed][x]["12"]
+
+
+    self.twoMadeHome.set(str(twoMadeHomeInt))
+    self.twoMissedHome.set(str(twoMissedHomeInt))
+    self.threeMadeHome.set(str(threeMadeHomeInt))
+    self.threeMissedHome.set(str(threeMissedHomeInt))
+    self.reboundsHome.set(str(reboundsHomeInt))
+    self.turnoversHome.set(str(turnoversHomeInt))
+    self.stealHome.set(str(stealHomeInt))
+    self.assistsHome.set(str(assistsHomeInt))
+    self.blocksHome.set(str(blocksHomeInt))
+    self.freeTrowsMadeHome.set(str(freeTrowsMadeHomeInt))
+    self.freeThrowsMissedHome.set(str(freeThrowsMissedHomeInt))
+    self.pointsHome.set(str(pointsHomeInt))
+
+    self.twoMadeAway.set(str(twoMadeAwayInt))
+    self.twoMissedAway.set(str(twoMissedAwayInt))
+    self.threeMadeAway.set(str(threeMadeAwayInt))
+    self.threeMissedAway.set(str(threeMissedAwayInt))
+    self.reboundsAway.set(str(reboundsAwayInt))
+    self.turnoversAway.set(str(turnoversAwayInt))
+    self.stealAway.set(str(stealAwayInt))
+    self.assistsAway.set(str(assistsAwayInt))
+    self.blocksAway.set(str(blocksAwayInt))
+    self.freeTrowsMadeAway.set(str(freeTrowsMadeAwayInt))
+    self.freeThrowsMissedAway.set(str(freeThrowsMissedAwayInt))
+    self.pointsAway.set(str(pointsAwayInt))
+
+    self.twoHH.config(text=self.twoMadeHome.get())
+    self.twoMH.config(text=self.twoMissedHome.get())
+    self.threeHH.config(text=self.threeMadeHome.get())
+    self.threeMH.config(text=self.threeMissedHome.get())
+    self.rebH.config(text=self.reboundsHome.get())
+    self.turnH.config(text=self.turnoversHome.get())
+    self.stealH.config(text=self.stealHome.get())
+    self.assistH.config(text=self.assistsHome.get())
+    self.blockH.config(text=self.blocksHome.get())
+    self.ftHH.config(text=self.freeTrowsMadeHome.get())
+    self.ftMH.config(text=self.freeThrowsMissedHome.get())
+    self.pointH.config(text=self.pointsHome.get())
+
+    self.twoHA.config(text=self.twoMadeAway.get())
+    self.twoMA.config(text=self.twoMissedAway.get())
+    self.threeHA.config(text=self.threeMadeAway.get())
+    self.threeMA.config(text=self.threeMissedAway.get())
+    self.rebA.config(text=self.reboundsAway.get())
+    self.turnA.config(text=self.turnoversAway.get())
+    self.stealA.config(text=self.stealAway.get())
+    self.assistA.config(text=self.assistsAway.get())
+    self.blockA.config(text=self.blocksAway.get())
+    self.ftHA.config(text=self.freeTrowsMadeAway.get())
+    self.ftMA.config(text=self.freeThrowsMissedAway.get())
+    self.pointA.config(text=self.pointsAway.get())
+
+    self.after(100, self.set_variables)
+
