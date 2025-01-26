@@ -80,6 +80,15 @@ class dashboard(tk.Toplevel):
     shipFrame.columnconfigure(1, weight=1)
 
     # Example of the choices
+    self.homeStringUpdateLeft = StringVar()
+    self.homeStringUpdateRight = StringVar()
+    self.awayStringUpdateLeft = StringVar()
+    self.awayStringUpdateRight = StringVar()
+
+    self.expHome = ttk.Label(shipFrame, text="None")
+    self.expHome.grid(row=0, column=0)
+    self.expAway = ttk.Label(shipFrame, text="None")
+    self.expAway.grid(row=0, column=1)
 
     homeShipButton = ttk.Button(shipFrame, style="HomeShip.TButton", text="Send To Photoshop", command=lambda: shipHome(self.homeLeft.get(), self.homeRight.get()))
     homeShipButton.grid(row=1, column=0)
@@ -95,4 +104,30 @@ class dashboard(tk.Toplevel):
 
     shipFrame.pack(fill="x", pady=10)
 
+    self.Away = Stats("away")
+    self.Home = Stats("home")
 
+    self.renderExamples()
+
+  def renderExamples(self):
+    with open("options.json", "r") as f:
+      dataOptions = json.load(f)
+
+    # Home Left 
+    homeLeftStatID = dataOptions["statPick"][self.homeLeft.get()]
+    self.homeStringUpdateLeft.set(self.Home.getValueOfStat(homeLeftStatID))
+    # Home Right
+    homeRightStatID = dataOptions["statPick"][self.homeRight.get()]
+    self.homeStringUpdateRight.set(self.Home.getValueOfStat(homeRightStatID))
+    self.expHome.config(text=self.homeStringUpdateLeft.get() + " - " + self.homeLeft.get() + "   " + self.homeStringUpdateRight.get() + "-" + self.homeRight.get())
+
+    # Home Left 
+    awayLeftStatID = dataOptions["statPick"][self.awayLeft.get()]
+    self.awayStringUpdateLeft.set(self.Away.getValueOfStat(awayLeftStatID))
+    # Home Right
+    awayRightStatID = dataOptions["statPick"][self.awayRight.get()]
+    self.awayStringUpdateRight.set(self.Away.getValueOfStat(awayRightStatID))
+    self.expAway.config(text=self.awayStringUpdateLeft.get() + " - " + self.awayLeft.get() + "   " + self.awayStringUpdateRight.get() + "-" + self.awayRight.get())
+
+    self.after(300, self.renderExamples)
+    

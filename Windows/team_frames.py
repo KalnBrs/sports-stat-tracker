@@ -67,61 +67,61 @@ class team_frame_away(tk.Toplevel):
     self.destroy()
 
   def two_point_made_away(self):
-    playerC = check_player(gameData.team_away_trimed, self.entry_num_away.get())
+    playerC = check_player(gameData.team_away_trimed, "1")
     if playerC is True:
-      stat_points_update("1", 2, gameData.team_away_trimed, self.entry_num_away.get())
+      stat_points_update("1", 2, gameData.team_away_trimed, "1")
     else:
       print("error 2")
 
   def three_point_made_away(self):
-    playerC = check_player(gameData.team_away_trimed, self.entry_num_away.get())
+    playerC = check_player(gameData.team_away_trimed, "1")
     if playerC is True:
-      stat_points_update("3", 3, gameData.team_away_trimed, self.entry_num_away.get())
+      stat_points_update("3", 3, gameData.team_away_trimed, "1")
 
   def free_throw_made_away(self):
-    playerC = check_player(gameData.team_away_trimed, self.entry_num_away.get())
+    playerC = check_player(gameData.team_away_trimed, "1")
     if playerC is True:
-      stat_points_update("10", 1, gameData.team_away_trimed, self.entry_num_away.get())
+      stat_points_update("10", 1, gameData.team_away_trimed, "1")
 
   def two_point_missed_away(self):
-    playerC = check_player(gameData.team_away_trimed, self.entry_num_away.get())
+    playerC = check_player(gameData.team_away_trimed, "1")
     if playerC is True:
-      stat_update("2", gameData.team_away_trimed, self.entry_num_away.get())
+      stat_update("2", gameData.team_away_trimed, "1")
 
   def three_point_missed_away(self):
-    playerC = check_player(gameData.team_away_trimed, self.entry_num_away.get())
+    playerC = check_player(gameData.team_away_trimed, "1")
     if playerC is True:
-      stat_update("4", gameData.team_away_trimed, self.entry_num_away.get())
+      stat_update("4", gameData.team_away_trimed, "1")
 
   def rebound_away(self):
-    playerC = check_player(gameData.team_away_trimed, self.entry_num_away.get())
+    playerC = check_player(gameData.team_away_trimed, "1")
     if playerC is True:
-      stat_update("5", gameData.team_away_trimed, self.entry_num_away.get())
+      stat_update("5", gameData.team_away_trimed, "1")
 
   def turnover_away(self):
-    playerC = check_player(gameData.team_away_trimed, self.entry_num_away.get())
+    playerC = check_player(gameData.team_away_trimed, "1")
     if playerC is True:
-      stat_update("6", gameData.team_away_trimed, self.entry_num_away.get())
+      stat_update("6", gameData.team_away_trimed, "1")
 
   def steal_away(self):
-    playerC = check_player(gameData.team_away_trimed, self.entry_num_away.get())
+    playerC = check_player(gameData.team_away_trimed, "1")
     if playerC is True:
-      stat_update("7", gameData.team_away_trimed, self.entry_num_away.get())
+      stat_update("7", gameData.team_away_trimed, "1")
 
   def assist_away(self):
-    playerC = check_player(gameData.team_away_trimed, self.entry_num_away.get())
+    playerC = check_player(gameData.team_away_trimed, "1")
     if playerC is True:
-      stat_update("8", gameData.team_away_trimed, self.entry_num_away.get())
+      stat_update("8", gameData.team_away_trimed, "1")
 
   def block_away(self):
-    playerC = check_player(gameData.team_away_trimed, self.entry_num_away.get())
+    playerC = check_player(gameData.team_away_trimed, "1")
     if playerC is True:
-      stat_update("9", gameData.team_away_trimed, self.entry_num_away.get())
+      stat_update("9", gameData.team_away_trimed, "1")
 
   def free_throw_missed_away(self):
-    playerC = check_player(gameData.team_away_trimed, self.entry_num_away.get())
+    playerC = check_player(gameData.team_away_trimed, "1")
     if playerC is True:
-      stat_update("11", gameData.team_away_trimed, self.entry_num_away.get())
+      stat_update("11", gameData.team_away_trimed, "1")
 
   def end_game(self):
     self.destroy()
@@ -187,61 +187,61 @@ class team_frame_home(tk.Toplevel):
     self.destroy()
 
   def two_point_made_home(self):
-    playerC = check_player(gameData.team_home_trimed, self.entry_num_home.get())
+    playerC = check_player(gameData.team_home_trimed, "1")
     if playerC is True:
-      stat_points_update("1", 2, gameData.team_home_trimed, self.entry_num_home.get())
+      stat_points_update("1", 2, gameData.team_home_trimed, "1")
     else:
       print("error 2")
 
   def three_point_made_home(self):
-    playerC = check_player(gameData.team_home_trimed, self.entry_num_home.get())
+    playerC = check_player(gameData.team_home_trimed, "1")
     if playerC is True:
-      stat_points_update("3", 3, gameData.team_home_trimed, self.entry_num_home.get())
+      stat_points_update("3", 3, gameData.team_home_trimed, "1")
 
   def free_throw_made_home(self):
-    playerC = check_player(gameData.team_home_trimed, self.entry_num_home.get())
+    playerC = check_player(gameData.team_home_trimed, "1")
     if playerC is True:
-      stat_points_update("10", 1, gameData.team_home_trimed, self.entry_num_home.get())
+      stat_points_update("10", 1, gameData.team_home_trimed, "1")
 
   def two_point_missed_home(self):
-    playerC = check_player(gameData.team_home_trimed, self.entry_num_home.get())
+    playerC = check_player(gameData.team_home_trimed, "1")
     if playerC is True:
-      stat_update("2", gameData.team_home_trimed, self.entry_num_home.get())
+      stat_update("2", gameData.team_home_trimed, "1")
 
   def three_point_missed_home(self):
-    playerC = check_player(gameData.team_home_trimed, self.entry_num_home.get())
+    playerC = check_player(gameData.team_home_trimed, "1")
     if playerC is True:
-      stat_update("4", gameData.team_home_trimed, self.entry_num_home.get())
+      stat_update("4", gameData.team_home_trimed, "1")
 
   def rebound_home(self):
-    playerC = check_player(gameData.team_home_trimed, self.entry_num_home.get())
+    playerC = check_player(gameData.team_home_trimed, "1")
     if playerC is True:
-      stat_update("5", gameData.team_home_trimed, self.entry_num_home.get())
+      stat_update("5", gameData.team_home_trimed, "1")
 
   def turnover_home(self):
-    playerC = check_player(gameData.team_home_trimed, self.entry_num_home.get())
+    playerC = check_player(gameData.team_home_trimed, "1")
     if playerC is True:
-      stat_update("6", gameData.team_home_trimed, self.entry_num_home.get())
+      stat_update("6", gameData.team_home_trimed, "1")
 
   def steal_home(self):
-    playerC = check_player(gameData.team_home_trimed, self.entry_num_home.get())
+    playerC = check_player(gameData.team_home_trimed, "1")
     if playerC is True:
-      stat_update("7", gameData.team_home_trimed, self.entry_num_home.get())
+      stat_update("7", gameData.team_home_trimed, "1")
 
   def assist_home(self):
-    playerC = check_player(gameData.team_home_trimed, self.entry_num_home.get())
+    playerC = check_player(gameData.team_home_trimed, "1")
     if playerC is True:
-      stat_update("8", gameData.team_home_trimed, self.entry_num_home.get())
+      stat_update("8", gameData.team_home_trimed, "1")
 
   def block_home(self):
-    playerC = check_player(gameData.team_home_trimed, self.entry_num_home.get())
+    playerC = check_player(gameData.team_home_trimed, "1")
     if playerC is True:
-      stat_update("9", gameData.team_home_trimed, self.entry_num_home.get())
+      stat_update("9", gameData.team_home_trimed, "1")
 
   def free_throw_missed_home(self):
-    playerC = check_player(gameData.team_home_trimed, self.entry_num_home.get())
+    playerC = check_player(gameData.team_home_trimed, "1")
     if playerC is True:
-      stat_update("11", gameData.team_home_trimed, self.entry_num_home.get())
+      stat_update("11", gameData.team_home_trimed, "1")
 
   def end_game(self):
     self.destroy()

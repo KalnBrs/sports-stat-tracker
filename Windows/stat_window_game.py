@@ -206,7 +206,6 @@ class Stat_Window_Game(tk.Toplevel):
     pointsAwayInt = 0
 
     for x in data["teams"][gameData.team_home_trimed]:
-
       twoMadeHomeInt += data["teams"][gameData.team_home_trimed][x]["1"]
       twoMissedHomeInt += data["teams"][gameData.team_home_trimed][x]["2"]
       threeMadeHomeInt += data["teams"][gameData.team_home_trimed][x]["3"]
