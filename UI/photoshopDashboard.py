@@ -4,7 +4,7 @@ import json
 from tkinter import messagebox
 import ttkbootstrap as ttk
 from collections import deque
-from game import gameData
+from Data.game import gameData
 from Methods.functions import *
 from Methods.photoshopFunct import *
 
@@ -18,8 +18,7 @@ class dashboard(tk.Toplevel):
     self.pathEntry = ttk.Entry(self)
     self.pathEntry.pack()
 
-    with open("options.json", "r") as f:
-      dataOptions = json.load(f)
+    dataOptions = loadOptions()
 
     dropDownFrame = ttk.Frame(self)
     dropDownFrame.columnconfigure(0, weight=1)
@@ -110,8 +109,7 @@ class dashboard(tk.Toplevel):
     self.renderExamples()
 
   def renderExamples(self):
-    with open("options.json", "r") as f:
-      dataOptions = json.load(f)
+    dataOptions = loadOptions()
 
     # Home Left 
     homeLeftStatID = dataOptions["statPick"][self.homeLeft.get()]

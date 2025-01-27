@@ -1,6 +1,7 @@
-from game import gameData
+from Data.game import gameData
 import json
 import math
+from Methods.functions import loadData
 
 # Send data to photoshop
 def shipHome(graphicLeft, graphicRight):
@@ -26,8 +27,7 @@ class Stats():
       self.trimed = gameData.team_away_trimed
 
   def restOfStats(self, statID):
-    with open("data.json", "r") as f:
-      data = json.load(f)
+    data = loadData()
 
     if statID == 13:
       return data["teams"][self.trimed]["1"]["5"]
@@ -41,8 +41,7 @@ class Stats():
       return data["teams"][self.trimed]["1"]["9"]
 
   def getFT(self, statID):
-    with open("data.json", "r") as f:
-      data = json.load(f)
+    data = loadData
 
     if statID == 9:
       return data["teams"][self.trimed]["1"]["10"]
@@ -54,8 +53,7 @@ class Stats():
       return str(self.getFT(9)) + "/" + str(self.getFT(10) + self.getFT(9))
 
   def getThree(self, statID):
-    with open("data.json", "r") as f:
-      data = json.load(f)
+    data = loadData()
 
     if statID == 5:
       return data["teams"][self.trimed]["1"]["3"]
@@ -67,8 +65,7 @@ class Stats():
       return str(self.getThree(5)) + "/" + str(self.getThree(6) + self.getThree(5))
 
   def getFieldGoal(self, statID):
-    with open("data.json", "r") as f:
-      data = json.load(f)
+    data = loadData()
 
     if statID == 1:
       return data["teams"][self.trimed]["1"]["1"] + data["teams"][self.trimed]["1"]["3"]
@@ -80,8 +77,7 @@ class Stats():
       return str(self.getFieldGoal(1)) + "/" + str(self.getFieldGoal(2) + self.getFieldGoal(1))
 
   def getValueOfStat(self, statID):
-    with open("data.json", "r") as f:
-      data = json.load(f)
+    data = loadData()
 
     if statID == 0:
       return "None"

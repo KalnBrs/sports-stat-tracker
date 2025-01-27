@@ -5,8 +5,8 @@ from tkinter import messagebox
 import ttkbootstrap as ttk
 from collections import deque
 from Methods.functions import check_team_two
-from Windows.choose_team import choose_team
-from game import gameData
+from UI.choose_team import choose_team
+from Data.game import gameData
 from Methods.functions import change_color
 
 #Creates the window for when game starts

@@ -3,9 +3,9 @@ from tkinter import *
 from tkinter import messagebox
 import ttkbootstrap as ttk
 from collections import deque
-from Windows.game_start import game_start
-from Windows.search_windows import search_window
-from Windows.coach_windows import Coach_Choose
+from UI.game_start import game_start
+from UI.search_windows import search_window
+from UI.coach_windows import Coach_Choose
 
 #Creates the window when class is called
 def create_window1():

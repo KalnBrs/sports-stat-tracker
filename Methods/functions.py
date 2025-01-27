@@ -11,13 +11,12 @@ def check_player(team, player):
   if player is not None and player.isdigit():
     check_data_loop = True
     while check_data_loop is True:   
-      with open("data.json", "r") as f:
-        data = json.load(f)
-        if player in data["teams"][team]:
-          check_data_loop = False
-          return True
-        else:
-          add_player(team, player)
+      data = loadData()
+      if player in data["teams"][team]:
+        check_data_loop = False
+        return True
+      else:
+        add_player(team, player)
 
   else:
     messagebox.showerror(title="Error", message="Please enter a valid number")
@@ -43,40 +42,36 @@ def add_player(team, num):
     }
   }
 
-  with open("data.json", "r") as f:
-    data = json.load(f)
-    data["teams"][team].update(my_player)
+  data = loadData()
+  data["teams"][team].update(my_player)
 
-  with open("data.json", "w") as f:
+  with open("Data/data.json", "w") as f:
     json.dump(data, f, indent=2)
 
 #Updates the stats when it is a non point stat
 def stat_update(statT, team, num):
-  with open("data.json", "r") as f:
-    data = json.load(f)
+  data = loadData()
   data['teams'][team][num][statT] += 1
 
-  with open("data.json", "w") as f:
+  with open("Data/data.json", "w") as f:
     f.write(json.dumps(data, indent=4))
 
 #Updates the stats when it is a point stat
 def stat_points_update(statT, points, team, num):
-  with open("data.json", "r") as f:
-    data = json.load(f)
+  data = loadData()
+  print(data)
   data["teams"][team][num][statT] += 1
   data["teams"][team][num]["12"] += points
 
-  with open("data.json", "w") as f:
+  with open("Data/data.json", "w") as f:
     f.write(json.dumps(data, indent=4))
 
 def stat_search_divide(team, player, num1, num2):
-  with open("data.json", "r") as f:
-    data = json.load(f)
+  data = loadData()
   messagebox.showinfo(title="Search Found", message=str(data["teams"][team][player][num1]) + "/" + str(data["teams"][team][player][num2] + data["teams"][team][player][num1]))
 
 def stat_search_add(team, player, stat):
-  with open("data.json", "r") as f:
-    data = json.load(f)
+  data = loadData()
   if data["teams"][team][player][stat] != 0:
     messagebox.showinfo(title="Search Found", message=data["teams"][team][player][stat])
   elif data["teams"][team][player][stat] == 0:
@@ -85,8 +80,7 @@ def stat_search_add(team, player, stat):
     messagebox.showerror(title="Error", message="Error")
 
 def stat_search_add_divide(team, player):
-  with open("data.json", "r") as f:
-    data = json.load(f)
+  data = loadData()
   sumMade = data["teams"][team][player]["1"] + data["teams"][team][player]["3"]
   sumMissed = sumMade + data["teams"][team][player]["2"] + data["teams"][team][player]["4"]
 
@@ -94,8 +88,7 @@ def stat_search_add_divide(team, player):
 
 #Shows the stats for the whole team
 def replace_stats(team):
-  with open("data.json", "r") as f:
-    data = json.load(f)
+  data = loadData()
 
   two_point_made = 0
   two_point_missed = 0
@@ -143,8 +136,7 @@ def replace_stats(team):
 
 #Shows the all the stats for one player
 def stats_all_player(team, player):
-  with open("data.json", "r") as f:
-    data = json.load(f)
+  data = loadData()
 
   two_point_made = 0
   two_point_missed = 0
@@ -193,8 +185,7 @@ def stats_all_player(team, player):
 def check_team_one(team):
   check_data_loop = True
   while check_data_loop is True:
-    with open("data.json", "r") as f:
-      data = json.load(f)
+    data = loadData()
     check_data_loop = False
     if team in data["teams"]:
       return True
@@ -210,12 +201,9 @@ def check_team_one(team):
 
 #Checks if two teams are in the data
 def check_team_two(teamH, teamA):
-  with open("data.json", "r") as f:
-    data = json.load(f)
+  data = loadData()
   check_data_loop = True
   while check_data_loop is True:
-    with open("data.json", "r") as f:
-      data = json.load(f)
     if teamH in data["teams"] and teamA in data["teams"]:
       check_data_loop = False
       return True
@@ -230,7 +218,7 @@ def check_team_two(teamH, teamA):
       add_team(teamH)
     else:
       print("error 1") 
-  with open("data.json", "w") as f:
+  with open("Data/data.json", "w") as f:
     f.write(json.dumps(data, indent=4))
 
 #Adds a team into the data
@@ -256,28 +244,33 @@ def add_team(team_name):
       }
     }
   }
-  with open("data.json", "r") as f:
-    data = json.load(f)
-    data["teams"].update(my_team)
+  data = loadData()
+  data["teams"].update(my_team)
 
-  with open("data.json", "w") as f:
+  with open("Data/data.json", "w") as f:
     f.write(json.dumps(data, indent=2))
 
 def add_color(color, colorValue):
-  with open("options.json", "r") as f:
-    optionsList = json.load(f)
+  optionsList = loadOptions()
 
   optionsList[options].append(color, 0)
   optionsList[options][color] = colorValue
 
-  with open("options.json", "w") as f:
+  with open("Data/options.json", "w") as f:
     f.write(json.dumps(optionsList, indent=2))
 
 def change_color(color) -> str:
-  with open("options.json", "r") as f:
-    colors = json.load(f)
+  colors = loadOptions()
 
   if color in colors["color-values"]:
     return colors["color-values"][color]
   else:
     return color
+
+def loadData():
+  with open ("Data/data.json", "r") as f:
+    return json.load(f)
+
+def loadOptions():
+  with open ("Data/options.json", "r") as f:
+    return json.load(f)

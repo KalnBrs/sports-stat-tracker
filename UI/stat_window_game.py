@@ -4,9 +4,9 @@ import json
 from tkinter import messagebox
 import ttkbootstrap as ttk
 from collections import deque
-from game import gameData
+from Data.game import gameData
 from Methods.functions import *
-from Windows.photoshopDashboard import dashboard
+from UI.photoshopDashboard import dashboard
 
 # Updating Stat Window
 class Stat_Window_Game(tk.Toplevel):
@@ -176,8 +176,7 @@ class Stat_Window_Game(tk.Toplevel):
     dashWindow = dashboard()
 
   def set_variables(self):
-    with open("data.json", "r") as f:
-      data = json.load(f)
+    data = loadData()
 
     twoMadeHomeInt = 0
     twoMissedHomeInt = 0

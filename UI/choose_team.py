@@ -3,9 +3,9 @@ from tkinter import *
 from tkinter import messagebox
 import json
 import ttkbootstrap as ttk
-from Windows.team_frames import team_frame_home, team_frame_away
-from game import gameData
-from Methods.functions import change_color
+from UI.team_frames import team_frame_home, team_frame_away
+from Data.game import gameData
+from Methods.functions import *
 
 #Creates the window for choose team
 class choose_team(tk.Toplevel):
@@ -22,8 +22,7 @@ class choose_team(tk.Toplevel):
     self.clicked = StringVar()
     self.clicked.set("None")
 
-    with open("options.json", "r") as f:
-      data = json.load(f)
+    data = loadOptions()
 
     self.drop = OptionMenu(self, self.clicked, *data["options"])
     self.drop.pack(pady = 10)

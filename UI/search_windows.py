@@ -4,7 +4,7 @@ import json
 from tkinter import messagebox
 import ttkbootstrap as ttk
 from collections import deque
-from game import gameData
+from Data.game import gameData
 from Methods.functions import *
 
 
@@ -64,8 +64,7 @@ class search_team_window(tk.Toplevel):
     self.destroy()
 
   def search_team(self):
-    with open("data.json", "r") as f:
-      data = json.load(f)
+    data = loadData()
     team_search = self.entry_team_search.get().lower().strip()
 
     if team_search in data["teams"]:
@@ -101,8 +100,7 @@ class search_player_window(tk.Toplevel):
     self.destroy()
 
   def player_search(self):
-    with open("data.json", "r") as f:
-      data = json.load(f)
+    data = loadData()
     global team_trimed
     team = self.entry_team.get()
     teamL = team.lower()

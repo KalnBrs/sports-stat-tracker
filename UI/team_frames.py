@@ -4,9 +4,9 @@ import json
 from tkinter import messagebox
 import ttkbootstrap as ttk
 from collections import deque
-from game import gameData
+from Data.game import gameData
 from Methods.functions import *
-from Windows.stat_window_game import Stat_Window_Game
+from UI.stat_window_game import Stat_Window_Game
 
 #Creates the window for the away team
 class team_frame_away(tk.Toplevel):

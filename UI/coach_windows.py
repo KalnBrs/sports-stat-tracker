@@ -4,7 +4,7 @@ import json
 from tkinter import messagebox
 import ttkbootstrap as ttk
 from collections import deque
-from game import gameData
+from Data.game import gameData
 from Methods.functions import *
 
 #Creates the coach window
@@ -35,9 +35,7 @@ class coach_window(tk.Toplevel):
     team_set = self.entry_team.get().lower().strip()
     team_check = check_team_one(team_set)
     if team_check is True:
-      #Sets data.json as data
-      with open("data.json", "r") as f:
-        data = json.load(f)
+      data = loadData()
 
       #takes the team entry and sets it to be able to be checked
       coach_team = self.entry_team.get()
@@ -108,8 +106,7 @@ class Coach_Look_Up(tk.Toplevel):
     team_set = self.entry.get().lower().strip()
     check_team = check_team_one(team_set)
     if check_team is True:
-      with open("data.json", "r") as f:
-        data = json.load(f)
+      data = loadData()
       keys = []
       for key in data["teams"][team_set].keys():
         keys.append(key + ",")
