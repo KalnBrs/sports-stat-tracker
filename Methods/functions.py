@@ -6,7 +6,16 @@ import ttkbootstrap as ttk
 from collections import deque
 
 #Function to use for Procedure
-#Checks if player is in data
+"""
+Checks if player is in data and loops until the player is in the data 
+
+params:
+  str team: the team the player is in
+  str player: the player that is going to be checked but has to be a numebr in the string
+
+return:
+  boolean: Say that the player is in the data
+"""
 def check_player(team, player):
   if player is not None and player.isdigit():
     check_data_loop = True
@@ -21,10 +30,16 @@ def check_player(team, player):
   else:
     messagebox.showerror(title="Error", message="Please enter a valid number")
 
-#Adds player to data
-def add_player(team, num):
+"""
+adds the player to the data with a preset template
+
+param:
+  str team: the team the player is getting added to 
+  str player: the player that is gettting added
+"""
+def add_player(team, player):
   my_player = {
-    num: {
+    player: {
       "1": 0,
       "2": 0,
       "3": 0,
@@ -48,28 +63,60 @@ def add_player(team, num):
   with open("Data/data.json", "w") as f:
     json.dump(data, f, indent=2)
 
-#Updates the stats when it is a non point stat
-def stat_update(statT, team, num):
+"""
+Updates the stat by 1
+
+param:
+  str statT: The stat that is getting updated
+  str team: The team that is getting updated
+  str player: The player that is getting updated 
+"""
+def stat_update(statT, team, player):
   data = loadData()
-  data['teams'][team][num][statT] += 1
+  data['teams'][team][player][statT] += 1
 
   with open("Data/data.json", "w") as f:
     f.write(json.dumps(data, indent=4))
 
-#Updates the stats when it is a point stat
-def stat_points_update(statT, points, team, num):
+"""
+Updates the points and the stats
+
+param:
+  str statT: The stat that is getting updated
+  int points: How many points that are getting added 
+  str team: The team that the player is apart of
+  str player: The player that the stats are getting added to
+"""
+def stat_points_update(statT, points, team, player):
   data = loadData()
   print(data)
-  data["teams"][team][num][statT] += 1
-  data["teams"][team][num]["12"] += points
+  data["teams"][team][player][statT] += 1
+  data["teams"][team][player]["12"] += points
 
   with open("Data/data.json", "w") as f:
     f.write(json.dumps(data, indent=4))
 
+"""
+Shows the stats for Made/Total 
+
+param:
+  str team: The team that the player is a partof 
+  str player: The player that you are searching
+  str num1: The made stat in the data
+  str num2: The missed stat in the data
+"""
 def stat_search_divide(team, player, num1, num2):
   data = loadData()
   messagebox.showinfo(title="Search Found", message=str(data["teams"][team][player][num1]) + "/" + str(data["teams"][team][player][num2] + data["teams"][team][player][num1]))
 
+"""
+Shows the stat for single stats
+
+param:
+  str team: The team for the player
+  str player: The player that you are searching for the stat
+  str stat: The stat that is getting searched for 
+"""
 def stat_search_add(team, player, stat):
   data = loadData()
   if data["teams"][team][player][stat] != 0:
@@ -79,6 +126,13 @@ def stat_search_add(team, player, stat):
   else:
     messagebox.showerror(title="Error", message="Error")
 
+"""
+Gets the Made/Total for the Threes and Twos combined 
+
+param:
+  str team: The team the player is on
+  str player: The player that is getting searched for 
+"""
 def stat_search_add_divide(team, player):
   data = loadData()
   sumMade = data["teams"][team][player]["1"] + data["teams"][team][player]["3"]
@@ -86,7 +140,13 @@ def stat_search_add_divide(team, player):
 
   messagebox.showinfo(title="Search Found", message=str(sumMade) + "/" + str(sumMissed)) 
 
-#Shows the stats for the whole team
+
+""" 
+Shows the stats for the whole team
+
+param:
+  str team: The team that is getting searched for
+"""
 def replace_stats(team):
   data = loadData()
 
@@ -134,7 +194,13 @@ def replace_stats(team):
   }
   messagebox.showinfo(title="Team Stats", message=json.dumps(player, indent=4))
 
-#Shows the all the stats for one player
+"""
+Shows all the stats for one player
+
+param:
+  str team: The team that the player is on
+  str player: The player that we are searching for 
+"""
 def stats_all_player(team, player):
   data = loadData()
 
@@ -181,7 +247,12 @@ def stats_all_player(team, player):
 
   messagebox.showinfo(title="Player Stats", message=json.dumps(player_all, indent=4))
 
-#Checks if a single team is in the data
+"""
+Checks if a single team is in the data and loops until it is added
+
+param:
+  str team: The team that is getting checked
+"""
 def check_team_one(team):
   check_data_loop = True
   while check_data_loop is True:
@@ -199,7 +270,13 @@ def check_team_one(team):
       print("error 302")
       check_data_loop = True
 
-#Checks if two teams are in the data
+"""
+Checks if two teams are in the data and keeps looping until they are added
+
+param:
+  str teamH: The home team that is getting checked 
+  str teamA: The away team that is getting checked
+"""
 def check_team_two(teamH, teamA):
   data = loadData()
   check_data_loop = True
@@ -222,6 +299,12 @@ def check_team_two(teamH, teamA):
     f.write(json.dumps(data, indent=4))
 
 #Adds a team into the data
+"""
+Adds a team into the data 
+
+params:
+  str team_name: The name of the team that is getting added 
+"""
 def add_team(team_name):
   num = "player"
   my_team = {
@@ -250,6 +333,13 @@ def add_team(team_name):
   with open("Data/data.json", "w") as f:
     f.write(json.dumps(data, indent=2))
 
+"""
+Adds a color to the options json file and asigns it a value
+
+param:
+  str color: The color name 
+  str colorValue: The hexadecimal value for that color
+"""
 def add_color(color, colorValue):
   optionsList = loadOptions()
 
@@ -259,6 +349,15 @@ def add_color(color, colorValue):
   with open("Data/options.json", "w") as f:
     f.write(json.dumps(optionsList, indent=2))
 
+"""
+Gets the color value for the selected color
+
+param:
+  str color: The color that the value is going to be returned
+
+return:
+  str: The value that is put into the UI
+"""
 def change_color(color) -> str:
   colors = loadOptions()
 
@@ -267,10 +366,22 @@ def change_color(color) -> str:
   else:
     return color
 
+"""
+Loads the data through open read
+
+return:
+  Object: The hashmap or json file of data
+"""
 def loadData():
   with open ("Data/data.json", "r") as f:
     return json.load(f)
 
+"""
+Loads the data for the options through open read
+
+return:
+  Object: The hashmap or json file of data
+"""
 def loadOptions():
   with open ("Data/options.json", "r") as f:
     return json.load(f)

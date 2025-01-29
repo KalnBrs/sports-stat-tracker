@@ -41,7 +41,7 @@ class Stats():
       return data["teams"][self.trimed]["1"]["9"]
 
   def getFT(self, statID):
-    data = loadData
+    data = loadData()
 
     if statID == 9:
       return data["teams"][self.trimed]["1"]["10"]
