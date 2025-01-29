@@ -1,8 +1,38 @@
-## Overview
-This is a backetball stat tracker that I built for a computer science class project. It uses python and a libary to set up a UI-Interface and to simplify the process. This application uses a json data based system for simplicity.
-Built for Python 3.12.5
+# Basketball Stat Tracker  
 
-## Next Steps
-The next steps to this prject are to:
-1. Intergrate changing photoshop text variables with the data from the stat tracker
-2. Compleatly automate the whole graphics process for my local AV basketball streams
+## Overview  
+This is a **basketball stat tracker** built as part of a **computer science class project**. The application is developed in **Python 3.12.5**, utilizing a UI library to simplify the interface and user experience. It employs a **JSON-based data system** for efficient and straightforward data management.  
+
+## Features  
+- User-friendly interface for tracking basketball stats  
+- JSON-based data storage for simplicity and flexibility  
+- Built using Python with a UI library for enhanced user experience  
+
+## Next Steps  
+The future development plans for this project include:  
+1. **Integration with Photoshop:** Automate changing Photoshop text variables using data from the stat tracker.  
+2. **Graphics Automation:** Fully automate the graphics generation process for **local AV basketball streams**.  
+
+## Requirements  
+- Python 3.12.5  
+- Required dependencies (install using `pip install -r requirements.txt`)  
+
+## Installation  
+1. Clone this repository:  
+  ```bash
+  git clone https://github.com/your-username/basketball-stat-tracker.git
+  cd basketball-stat-tracker 
+  ```
+2. Install dependencies:
+  ```bash 
+  pip install -r requirements.txt
+  ```
+3. Run the application:
+  ```bash
+  python main.py
+  ```
+## Contributions
+Feel free to contribute by opening an issue or submitting a pull request!
+
+## License
+MIT License
