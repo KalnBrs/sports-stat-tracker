@@ -33,6 +33,8 @@
     "Steals": 15,
     "Assists": 16,
     "Blocks": 17,
+    "------": 0,
+    "Timeouts": 18,
     "None": 0
   }
 }

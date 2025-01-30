@@ -53,6 +53,9 @@ class game_start(tk.Toplevel):
     gameData.team_away = self.team_away
     gameData.team_away_trimed = self.team_away_trimed
 
+    gameData.homeTimeLeft = 5
+    gameData.awayTimeLeft = 5
+
     if self.team_away_trimed != "" and self.team_home_trimed != "":
       if check_team_two(self.team_home_trimed, self.team_away_trimed) is True:
         extrawindow = choose_team()

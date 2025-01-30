@@ -21,10 +21,14 @@ def updateTimeAway():
 class Stats():
   def __init__(self, team):
     self.trimed = ""
+    self.gameTimeout = None
+
     if team == "home":
       self.trimed = gameData.team_home_trimed
+      self.gameTimeout = gameData.homeTimeLeft
     elif team == "away":
       self.trimed = gameData.team_away_trimed
+      self.gameTimeout = gameData.awayTimeLeft
 
   def restOfStats(self, statID):
     data = loadData()
@@ -39,6 +43,8 @@ class Stats():
       return data["teams"][self.trimed]["1"]["8"]
     if statID == 17:
       return data["teams"][self.trimed]["1"]["9"]
+    if statID == 18:
+      return self.gameTimeout
 
   def getFT(self, statID):
     data = loadData()

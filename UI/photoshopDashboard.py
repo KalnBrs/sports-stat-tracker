@@ -117,7 +117,7 @@ class dashboard(tk.Toplevel):
     # Home Right
     homeRightStatID = dataOptions["statPick"][self.homeRight.get()]
     self.homeStringUpdateRight.set(self.Home.getValueOfStat(homeRightStatID))
-    self.expHome.config(text=self.homeStringUpdateLeft.get() + " - " + self.homeLeft.get() + "   " + self.homeStringUpdateRight.get() + "-" + self.homeRight.get())
+    self.expHome.config(text=self.homeStringUpdateLeft.get() + " - " + self.homeLeft.get() + "   " + self.homeStringUpdateRight.get() + " - " + self.homeRight.get())
 
     # Home Left 
     awayLeftStatID = dataOptions["statPick"][self.awayLeft.get()]
@@ -125,7 +125,7 @@ class dashboard(tk.Toplevel):
     # Home Right
     awayRightStatID = dataOptions["statPick"][self.awayRight.get()]
     self.awayStringUpdateRight.set(self.Away.getValueOfStat(awayRightStatID))
-    self.expAway.config(text=self.awayStringUpdateLeft.get() + " - " + self.awayLeft.get() + "   " + self.awayStringUpdateRight.get() + "-" + self.awayRight.get())
+    self.expAway.config(text=self.awayStringUpdateLeft.get() + " - " + self.awayLeft.get() + "   " + self.awayStringUpdateRight.get() + " - " + self.awayRight.get())
 
     self.after(300, self.renderExamples)
     
