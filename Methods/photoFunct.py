@@ -1,22 +1,36 @@
 from Data.game import gameData
 import json
 import math
-from Methods.functions import loadData
+from Methods.functions import *
 from Methods.statObj import *
 
 def updateTimeHome():
-  print("TO Shiped")
   gameData.homeTimeLeft -= 1
+  TOleft = gameData.homeTeamLeft
 
 def updateTimeAway():
-  print("TO Shiped")
   gameData.awayTimeLeft -= 1
+  TOleft = gameData.homeTeamLeft
 
 # Send data to photoshop
 def shipHome(graphicLeft, graphicRight):
-  print(graphicLeft, graphicRight)
-  print("Shipped")
+  Home = Stats("home")
+  dataOptions = loadOptions()
+  statLeft = str(Home.getValueOfStat(dataOptions["statPick"][graphicLeft]))
+  statLeftText = graphicLeft 
+
+  statRight = str(Home.getValueOfStat(dataOptions["statPick"][graphicRight]))
+  statRightText = graphicRight
+
+  print(f"{statLeft} - {statLeftText} {statRight} - {statRightText}")
 
 def shipAway(graphicLeft, graphicRight):
-  print(graphicLeft, graphicRight)
-  print("Shipped")
+  Away = Stats("away")
+  dataOptions = loadOptions()
+  statLeft = str(Away.getValueOfStat(dataOptions["statPick"][graphicLeft]))
+  statLeftText = graphicLeft 
+
+  statRight = str(Away.getValueOfStat(dataOptions["statPick"][graphicRight]))
+  statRightText = graphicRight
+
+  print(f"{statLeft} - {statLeftText} {statRight} - {statRightText}")
