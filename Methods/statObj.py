@@ -3,32 +3,16 @@ import json
 import math
 from Methods.functions import loadData
 
-# Send data to photoshop
-def shipHome(graphicLeft, graphicRight):
-  print(graphicLeft, graphicRight)
-  print("Shipped")
-
-def shipAway(graphicLeft, graphicRight):
-  print(graphicLeft, graphicRight)
-  print("Shipped")
-
-def updateTimeHome():
-  print("TO Shiped")
-
-def updateTimeAway():
-  print("TO Shiped")
-
 class Stats():
   def __init__(self, team):
+    self.team = team
     self.trimed = ""
     self.gameTimeout = None
 
-    if team == "home":
+    if self.team == "home":
       self.trimed = gameData.team_home_trimed
-      self.gameTimeout = gameData.homeTimeLeft
-    elif team == "away":
+    elif self.team == "away":
       self.trimed = gameData.team_away_trimed
-      self.gameTimeout = gameData.awayTimeLeft
 
   def restOfStats(self, statID):
     data = loadData()
@@ -44,6 +28,10 @@ class Stats():
     if statID == 17:
       return data["teams"][self.trimed]["1"]["9"]
     if statID == 18:
+      if self.team == "home":
+        self.gameTimeout = gameData.homeTimeLeft
+      elif self.team == "away":
+        self.gameTimeout = gameData.awayTimeLeft
       return self.gameTimeout
 
   def getFT(self, statID):

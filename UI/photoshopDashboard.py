@@ -6,7 +6,9 @@ import ttkbootstrap as ttk
 from collections import deque
 from Data.game import gameData
 from Methods.functions import *
-from Methods.photoshopFunct import *
+from Methods.photoFunct import *
+from Methods.statObj import *
+
 
 class dashboard(tk.Toplevel):
   def __init__(self):
