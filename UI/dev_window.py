@@ -1,17 +1,72 @@
 import tkinter as tk
 from tkinter import *
 import json
-from tkinter import messagebox
+from ttkbootstrap.dialogs import Messagebox
 import ttkbootstrap as ttk
 from collections import deque
 from Data.game import gameData
 from Methods.functions import *
 
 class dev_window(tk.Toplevel):
-  def __init__(self)
+  def __init__(self):
     super().__init__()
     self.title("Dev")
     self.geometry("300x300")
-    self.minsize(200, 200)
+    self.minsize(300, 300)
 
-    
+    addColor = ttk.Button(self, text="Add Color")
+    addColor.pack(pady=10)
+
+    dataButton = ttk.Button(self, text="Reset Data", command=self.resetData)
+    dataButton.pack()
+
+    data = loadOptions()
+    clicked = StringVar()
+    clicked.set("None")
+
+    colorLabelPick = ttk.Label(self, text="Pick a color:").pack(pady=5)
+    drop = OptionMenu(self, clicked, *data["options"])
+    drop.pack()
+
+    colorLabelNew = ttk.Label(self, text="New Value:").pack(pady=5)
+    colorEntry = ttk.Entry(self)
+    colorEntry.pack()
+
+    changeColor = ttk.Button(self, text="Change Color Value")
+    changeColor.pack(pady=10)
+
+  def resetData(self):
+    correctData = {"teams": {
+      "team_name": {
+        "player": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0,
+          "10": 0,
+          "11": 0,
+          "12": 0,
+          "13": 0,
+          "14": 0
+        }
+      }
+    }}
+    check = Messagebox.yesno(
+      title = "Confirmation", 
+      message="Are you sure you want to clear all data"
+    )
+
+    if check:
+      data = loadData()
+      data = correctData
+
+      with open("Data/data.json", "w") as f:
+        f.write(json.dumps(data, indent=2))
+    else:
+      pass
+

@@ -6,6 +6,7 @@ from collections import deque
 from UI.game_start import game_start
 from UI.search_windows import search_window
 from UI.coach_windows import Coach_Choose
+from UI.dev_window import dev_window
 
 #Creates the window when class is called
 def create_window1():
@@ -22,9 +23,9 @@ def on_exit():
   if messagebox.askyesno(title="Exit", message="Are you sure you want to exit?"):
     window.destroy()
 
-def dev_window():
+def dev_open():
   #Login window
-  devWindow = Dev_Window()
+  devWindow = dev_window()
 
 # Creates the window at the start and sets theme
 window = ttk.Window(themename = 'darkly')
@@ -53,7 +54,7 @@ buttonframe.columnconfigure(0, weight=1)
 
 button_exit = ttk.Button(buttonframe, text="Exit", command=on_exit)
 button_exit.grid(row=0, column=0, padx=10, pady=10, sticky=tk.W+tk.E)
-button_dev = ttk.Button(buttonframe, text="Dev", command=dev_window)
+button_dev = ttk.Button(buttonframe, text="Dev", command=dev_open)
 button_dev.grid(row=0, column=1, padx=10, pady=10, sticky=tk.W+tk.E)
 
 buttonframe.pack(fill="x", padx=10, pady=10)
