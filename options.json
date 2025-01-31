@@ -1,6 +1,5 @@
 {
   "options": [
-    "Monona Grove",
     "Red",
     "Orange",
     "Yellow",
@@ -10,8 +9,7 @@
   ],
   "color-values": {
     "None": "#435058",
-    "Blue": "#0072BB",
-    "Monona Grove": "#9BDDFF"
+    "Blue": "#0072BB"
   },
   "statPick": {
     "FG Made": 1,
