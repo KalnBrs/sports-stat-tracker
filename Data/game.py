@@ -1,6 +1,6 @@
 # This class contains the data needed for the program
 class gameData():
-  def __init__():
+  def __init__(self):
     self.team_home = ""
     self.team_home_trimed = ""
     self.team_away = ""

@@ -373,7 +373,7 @@ return:
   Object: The hashmap or json file of data
 """
 def loadData():
-  with open ("Data/data.json", "r") as f:
+  with open (r"Data\data.json", "r") as f:
     return json.load(f)
 
 """
@@ -383,5 +383,5 @@ return:
   Object: The hashmap or json file of data
 """
 def loadOptions():
-  with open ("Data/options.json", "r") as f:
+  with open (r"Data\options.json", "r") as f:
     return json.load(f)
