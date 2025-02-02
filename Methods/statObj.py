@@ -33,6 +33,10 @@ class Stats():
       elif self.team == "away":
         self.gameTimeout = gameData.awayTimeLeft
       return self.gameTimeout
+    if statID == 19:
+      if self.team == "home":
+        return gameData.homeFouls
+      return gameData.awayFouls
 
   def getFT(self, statID):
     data = loadData()

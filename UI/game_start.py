@@ -53,8 +53,10 @@ class game_start(tk.Toplevel):
     gameData.team_away = self.team_away
     gameData.team_away_trimed = self.team_away_trimed
 
-    gameData.homeTimeLeft = 5
-    gameData.awayTimeLeft = 5
+    gameData.homeTimeLeft = 3
+    gameData.awayTimeLeft = 3
+    gameData.homeFouls = 0
+    gameData.awayFouls = 0 
 
     if self.team_away_trimed != "" and self.team_home_trimed != "":
       if check_team_two(self.team_home_trimed, self.team_away_trimed) is True:

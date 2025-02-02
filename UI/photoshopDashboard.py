@@ -14,7 +14,7 @@ class dashboard(tk.Toplevel):
   def __init__(self):
     super().__init__()
     self.title("Dashboard")
-    self.geometry("500x500")
+    self.geometry("400x400")
     self.minsize(300, 300)
     self.label_intro = ttk.Label(self, text="Paste Path to Graphic: ").pack()
     self.pathEntry = ttk.Entry(self)
@@ -118,6 +118,11 @@ class dashboard(tk.Toplevel):
     self.Home = Stats("home")
 
     self.renderExamples()
+    self.fouls()
+    
+  def fouls(self):
+    updateBottom()
+    self.after(1000, self.fouls)
 
   def hideBoth(self):
     hideHome()

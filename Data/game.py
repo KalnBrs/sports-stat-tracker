@@ -9,6 +9,8 @@ class gameData():
     self.awayColor = ""
     self.homeTimeLeft = 5
     self.awayTimeLeft = 5
+    self.homeFouls = 0
+    self.awayFouls = 0
 
   def getHome():
     return self.team_home

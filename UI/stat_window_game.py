@@ -13,7 +13,7 @@ class Stat_Window_Game(tk.Toplevel):
   def __init__(self):
     super().__init__()
     self.title("Stats")
-    self.geometry("500x500")
+    self.geometry("200x350")
     self.minsize(200, 350)
 
     self.teamHome = StringVar()

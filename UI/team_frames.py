@@ -53,12 +53,16 @@ class team_frame_away(tk.Toplevel):
     buttonframe.pack(fill="x")
 
     self.stat_button = ttk.Button(self, text="Stats", command=self.open_stats).pack(padx=5)
+    self.stat_button = ttk.Button(self,text="Foul", command=self.updateFouls).pack(pady=10)
 
     self.menubar = tk.Menu(self)
     self.closebar = tk.Menu(self.menubar, tearoff=0)
     self.closebar.add_command(label="Close", command=self.on_closing )
     self.menubar.add_cascade(menu=self.closebar, label="Close")
     self.config(menu=self.menubar)
+
+  def updateFouls(self):
+    gameData.awayFouls += 1 
 
   def open_stats(self):
     extra_window = Stat_Window_Game()
@@ -173,12 +177,16 @@ class team_frame_home(tk.Toplevel):
     buttonframe.pack(fill="x")
 
     self.stat_button = ttk.Button(self, text="Stats", command=self.open_stats).pack(padx=5)
+    self.stat_button = ttk.Button(self,text="Foul", command=self.updateFouls).pack(pady=10)
 
     self.menubar = tk.Menu(self)
     self.closebar = tk.Menu(self.menubar, tearoff=0)
     self.closebar.add_command(label="Close", command=self.on_closing )
     self.menubar.add_cascade(menu=self.closebar, label="Close")
     self.config(menu=self.menubar)
+
+  def updateFouls(self):
+    gameData.homeFouls += 1
 
   def open_stats(self):
     extra_window = Stat_Window_Game()
