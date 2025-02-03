@@ -8,6 +8,7 @@ from Data.game import gameData
 from Methods.functions import *
 from Methods.photoFunct import *
 from Methods.statObj import *
+from Methods.bottom import *
 
 
 class dashboard(tk.Toplevel):
