@@ -1,11 +1,10 @@
 from Data.game import gameData
-import json
-import math
+from PATH import *
 from Methods.functions import *
 from Methods.statObj import *
 import win32com.client
 
-pathToGraphic = r"C:\Users\monon\OneDrive\Desktop\Basketball\Boys\vs Oregon 010925\SCOREBOX.psd"
+pathToGraphic = getPath()
 
 app = win32com.client.Dispatch("Photoshop.Application")
 #Opens it on the desktop
@@ -36,15 +35,12 @@ def updateBottom():
   timePlace = dock.ArtLayers["bottomTimeoutHomeNum"]
   timePlace = timePlace.TextItem
   if (timePlace.Contents != str(gameData.homeTimeLeft)):
-    print("home")
     timePlace.Contents = str(gameData.homeTimeLeft)
     timePlace.Position = (651.7241428806379, 1038.901770622075)
   
   timePlace = dock.ArtLayers["bottomTimeoutAwayNum"]
   timePlace = timePlace.TextItem
-  print(timePlace.Position)
   if (timePlace.Contents != str(gameData.awayTimeLeft)):
-    print("away")
     timePlace.Contents = str(gameData.awayTimeLeft)
     timePlace.Position = (1273.7241428806376, 1038.901770622075)
 
@@ -112,9 +108,7 @@ def shipHome(graphicLeft, graphicRight):
   layerName = "homeLeftStat"
   text_layer_text = dock.ArtLayers[layerName]
   text_layer_text = text_layer_text.TextItem
-  text_layer_text.Contents = statLeftText
-  print(f"Left text{text_layer_stat.Position}")
-  print(f"Left stat{text_layer_text.Position}")  
+  text_layer_text.Contents = statLeftText 
   firstPos = 378.0564902562039
   secondPos = 463.0086854673061
   if (len(statLeft) == 1):
@@ -147,8 +141,6 @@ def shipHome(graphicLeft, graphicRight):
   text_layer_text = dock.ArtLayers[layerName]
   text_layer_text = text_layer_text.TextItem
   text_layer_text.Contents = statRightText
-  print(f"Right text{text_layer_stat.Position}")
-  print(f"Righ stat{text_layer_text.Position}")
   firstPos = 597.0555500271992
   secondPos = 677.0077828293704
   if (len(statRight) == 1):
@@ -187,8 +179,6 @@ def shipAway(graphicLeft, graphicRight):
   text_layer_text = dock.ArtLayers[layerName]
   text_layer_text = text_layer_text.TextItem
   text_layer_text.Contents = statLeftText
-  print(f"Left text{text_layer_stat.Position}")
-  print(f"Left stat{text_layer_text.Position}") 
   firstPos = 1149.056490256204
   secondPos = 1234.0086854673061
   if (len(statLeft) == 1):
@@ -222,8 +212,6 @@ def shipAway(graphicLeft, graphicRight):
   text_layer_text = dock.ArtLayers[layerName]
   text_layer_text = text_layer_text.TextItem
   text_layer_text.Contents = statRightText
-  print(f"Right text{text_layer_stat.Position}")
-  print(f"Righ stat{text_layer_text.Position}")
   firstPos = 1357.0555500271992
   secondPos = 1438.0077828293704
   if (len(statRight) == 1):
@@ -245,7 +233,6 @@ def shipAway(graphicLeft, graphicRight):
     text_layer_stat.Position = (firstPos+26, 895.0732458712706)
     text_layer_text.Position = (secondPos+50, 895.0960563801272)
 
-  print(f"{statLeft} - {statLeftText} {statRight} - {statRightText}")
 
 def hideHome():
   layer1 = dock.ArtLayers["homeLeftScore"]
