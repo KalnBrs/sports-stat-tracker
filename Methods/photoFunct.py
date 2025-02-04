@@ -290,3 +290,4 @@ def showAway():
   layer4.Visible = True
   layer5.Visible = True
 dock.Save()
+doc1.Save()
