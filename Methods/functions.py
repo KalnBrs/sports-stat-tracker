@@ -306,7 +306,7 @@ params:
   str team_name: The name of the team that is getting added 
 """
 def add_team(team_name):
-  num = "player"
+  num = "1"
   my_team = {
     team_name: {
       num: {
