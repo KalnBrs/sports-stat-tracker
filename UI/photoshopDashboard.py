@@ -92,19 +92,19 @@ class dashboard(tk.Toplevel):
     self.expAway = ttk.Label(shipFrame, text="None")
     self.expAway.grid(row=0, column=1)
 
-    homeShipButton = ttk.Button(shipFrame, style="HomeShip.TButton", text="Send To Photoshop", command=lambda: shipHome(self.homeLeft.get(), self.homeRight.get()))
+    homeShipButton = ttk.Button(shipFrame, style="HomeShip.TButton", text="Send To Photoshop", command=self.homeShip())
     homeShipButton.grid(row=1, column=0)
-    awayShipButton = ttk.Button(shipFrame, style="AwayShip.TButton", text="Send To Photoshop", command=lambda: shipAway(self.awayLeft.get(), self.awayRight.get()))
+    awayShipButton = ttk.Button(shipFrame, style="AwayShip.TButton", text="Send To Photoshop", command=self.awayShip())
     awayShipButton.grid(row=1, column=1)
 
-    homeTimeButton = ttk.Button(shipFrame, style="HomeShip.TButton", text="Timeout", command=lambda: updateTimeHome())
+    homeTimeButton = ttk.Button(shipFrame, style="HomeShip.TButton", text="Timeout", command=self.homeUpdate())
     homeTimeButton.grid(row=2, column=0)
-    awayTimeButton = ttk.Button(shipFrame, style="AwayShip.TButton", text="Timeout", command=lambda: updateTimeAway())
+    awayTimeButton = ttk.Button(shipFrame, style="AwayShip.TButton", text="Timeout", command=self.awayUpdate())
     awayTimeButton.grid(row=2, column=1)
 
-    homeHide = ttk.Button(shipFrame, style="HomeShip.TButton", text="Hide", command=hideHome)
+    homeHide = ttk.Button(shipFrame, style="HomeShip.TButton", text="Hide", command=self.homeHide())
     homeHide.grid(row=3, column=0)
-    awayHide = ttk.Button(shipFrame, style="AwayShip.TButton", text="Hide", command=hideAway)
+    awayHide = ttk.Button(shipFrame, style="AwayShip.TButton", text="Hide", command=self.awayHide())
     awayHide.grid(row=3, column=1)
 
     shipFrame.pack(fill="x", pady=10)
@@ -120,6 +120,30 @@ class dashboard(tk.Toplevel):
 
     self.renderExamples()
     self.fouls()
+
+  def homeHide(self):
+    hideHome()
+    exportStats()
+
+  def awayHide(self):
+    hideAway()
+    exportStats()
+
+  def homeUpdate(self):
+    updateTimeHome()
+    exportStats()
+
+  def awayUpdate(self):
+    updateTimeAway()
+    exportStats()
+
+  def awayShip(self):
+    shipAway(self.awayLeft.get(), self.awayRight.get())
+    exportStats()
+
+  def homeShip(self):
+    shipHome(self.homeLeft.get(), self.homeRight.get())
+    exportStats()
     
   def fouls(self):
     updateBottom()
@@ -128,11 +152,12 @@ class dashboard(tk.Toplevel):
   def hideBoth(self):
     hideHome()
     hideAway()
-
+    exportStats()
 
   def shipBoth(self):
     shipHome(self.homeLeft.get(), self.homeRight.get())
     shipAway(self.awayLeft.get(), self.awayRight.get())
+    exportStats()
 
   def renderExamples(self):
     dataOptions = loadOptions()

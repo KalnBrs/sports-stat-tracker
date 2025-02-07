@@ -19,6 +19,7 @@ def exportBottom():
   png_options.Interlaced = False  # Set to False for non-progressive PNG
 
   doc.SaveAs(output_path, png_options, asCopy=True)
+  atemExport1(output_path)
 
 dock.Save()
 
