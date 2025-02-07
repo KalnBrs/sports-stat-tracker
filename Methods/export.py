@@ -42,7 +42,6 @@ def atemExport1(path):
           atem.upload_to_media_pool(img.tobytes(), slot=1, filename="SCOREBOX")
 
       print(f"Uploaded {exported_image_path} to ATEM media pool slot 1")
-
   else:
       print("Error: File not found!")
 
@@ -61,7 +60,6 @@ if os.path.exists(exported_image_path):
         atem.upload_to_media_pool(img.tobytes(), slot=2, filename="STATPOPUP")
 
     print(f"Uploaded {exported_image_path} to ATEM media pool slot 1")
-
 else:
     print("Error: File not found!")
 
