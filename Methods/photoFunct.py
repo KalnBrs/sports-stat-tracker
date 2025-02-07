@@ -36,7 +36,6 @@ def updateTimeHome():
 
   timeOutLayer.Size = 72
   timeOutLayer.Position = (571.0564902562039, 903.0732458712706)
-  exportStats()
 
 def updateTimeAway():
   dock.Activate()
@@ -61,7 +60,6 @@ def updateTimeAway():
 
   timeOutLayer.Size = 72
   timeOutLayer.Position = (1330.0564902562044, 901.0732458712706)
-  exportStats()
 
 # Send data to photoshop
 def shipHome(graphicLeft, graphicRight):
@@ -134,7 +132,7 @@ def shipHome(graphicLeft, graphicRight):
   elif (len(statRight) == 5):
     text_layer_stat.Position = (firstPos+26, 895.0732458712706)
     text_layer_text.Position = (secondPos+50, 895.0960563801272)
-  exportStats()
+
 
 def shipAway(graphicLeft, graphicRight):
   dock.Activate()
@@ -207,7 +205,6 @@ def shipAway(graphicLeft, graphicRight):
   elif (len(statRight) == 5):
     text_layer_stat.Position = (firstPos+26, 895.0732458712706)
     text_layer_text.Position = (secondPos+50, 895.0960563801272)
-  exportStats()
 
 
 def hideHome():
