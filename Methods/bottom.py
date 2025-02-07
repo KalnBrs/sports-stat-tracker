@@ -12,6 +12,7 @@ app.Open(pathToBottom)
 doc1 = app.ActiveDocument
 
 def updateBottom():
+  doc1.Activate()
   foulPlace = doc1.ArtLayers["bottomFoulHomeNum"]
   foulPlace = foulPlace.TextItem
   if (foulPlace.Contents != str(gameData.homeFouls)):
