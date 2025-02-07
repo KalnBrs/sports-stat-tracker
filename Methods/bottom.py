@@ -41,3 +41,12 @@ def updateBottom():
   if (timePlace.Contents != str(gameData.awayTimeLeft)):
     timePlace.Contents = str(gameData.awayTimeLeft)
     timePlace.Position = (1273.7241428806376, 1038.901770622075)
+
+def exportbottom():
+  output_path = getBottomOutput()  # Replace with your desired export location
+  png_options = win32com.client.Dispatch("Photoshop.PNGSaveOptions")
+  png_options.Interlaced = False  # Set to False for non-progressive PNG
+
+  doc.SaveAs(output_path, png_options, asCopy=True)
+
+doc1.Save()

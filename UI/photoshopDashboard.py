@@ -129,6 +129,7 @@ class dashboard(tk.Toplevel):
     hideHome()
     hideAway()
 
+
   def shipBoth(self):
     shipHome(self.homeLeft.get(), self.homeRight.get())
     shipAway(self.awayLeft.get(), self.awayRight.get())
