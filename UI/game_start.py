@@ -53,8 +53,8 @@ class game_start(tk.Toplevel):
     gameData.team_away = self.team_away
     gameData.team_away_trimed = self.team_away_trimed
 
-    gameData.homeTimeLeft = 3
-    gameData.awayTimeLeft = 3
+    gameData.homeTimeLeft = 5
+    gameData.awayTimeLeft = 5
     gameData.homeFouls = 0
     gameData.awayFouls = 0 
 

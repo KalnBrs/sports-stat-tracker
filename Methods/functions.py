@@ -89,7 +89,6 @@ param:
 """
 def stat_points_update(statT, points, team, player):
   data = loadData()
-  print(data)
   data["teams"][team][player][statT] += 1
   data["teams"][team][player]["12"] += points
 

@@ -5,7 +5,6 @@ from Methods.statObj import *
 import win32com.client
 
 pathToGraphic = getPath()
-pathToBottom = getBottom()
 
 app = win32com.client.Dispatch("Photoshop.Application")
 #Opens it on the desktop For Stats
@@ -254,4 +253,3 @@ def showAway():
   layer4.Visible = True
   layer5.Visible = True
 dock.Save()
-doc1.Save()

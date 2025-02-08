@@ -1,11 +1,9 @@
 #PUT PATH HERE
-pathToGraphic = r"C:\Users\monon\OneDrive\Desktop\Basketball\Boys\vs Oregon 010925\Stat.psd"
-pathToBottom = r"C:\Users\monon\OneDrive\Desktop\Basketball\Boys\vs Oregon 010925\SCOREBOX.psd"
+pathToGraphic = r"C:\Users\monon\OneDrive\Desktop\Basketball\Girls\vs Waunakee 02-06-25\StatPopUp.psd"
+pathToScorebox = r"C:\Users\monon\OneDrive\Desktop\Basketball\Girls\vs Waunakee 02-06-25\SCOREBOX.psd"
 
-#PUT OTHER PATH HERE
-pathToBottom = r""
 def getPath():
     return pathToGraphic
 
 def getBottom():
-    return pathToBottom
+    return pathToScorebox
