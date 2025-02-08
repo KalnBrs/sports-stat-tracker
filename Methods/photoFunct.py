@@ -3,6 +3,7 @@ from PATH import *
 from Methods.functions import *
 from Methods.statObj import *
 import win32com.client
+from Methods.export import *
 
 pathToGraphic = getPath()
 
@@ -13,6 +14,7 @@ app.Open(pathToGraphic)
 dock = app.ActiveDocument
 
 def updateTimeHome():
+  dock.Activate()
   gameData.homeTimeLeft -= 1
 
   layer1 = dock.ArtLayers["homeLeftStat"]
@@ -34,8 +36,8 @@ def updateTimeHome():
   timeOutLayer.Size = 72
   timeOutLayer.Position = (571.0564902562039, 903.0732458712706)
 
-
 def updateTimeAway():
+  dock.Activate()
   gameData.awayTimeLeft -= 1
   TOleft = gameData.awayTimeLeft
   
@@ -60,6 +62,7 @@ def updateTimeAway():
 
 # Send data to photoshop
 def shipHome(graphicLeft, graphicRight):
+  dock.Activate()
   showHome()
   Home = Stats("home")
   dataOptions = loadOptions()
@@ -129,7 +132,9 @@ def shipHome(graphicLeft, graphicRight):
     text_layer_stat.Position = (firstPos+26, 895.0732458712706)
     text_layer_text.Position = (secondPos+50, 895.0960563801272)
 
+
 def shipAway(graphicLeft, graphicRight):
+  dock.Activate()
   showAway()
   Away = Stats("away")
   dataOptions = loadOptions()
@@ -202,6 +207,7 @@ def shipAway(graphicLeft, graphicRight):
 
 
 def hideHome():
+  dock.Activate()
   layer1 = dock.ArtLayers["homeLeftScore"]
   layer2 = dock.ArtLayers["homeLeftStat"]
   layer3 = dock.ArtLayers["homeRightScore"]
@@ -215,6 +221,7 @@ def hideHome():
   layer5.Visible = False
 
 def hideAway():
+  dock.Activate()
   layer1 = dock.ArtLayers["awayLeftScore"]
   layer2 = dock.ArtLayers["awayLeftStat"]
   layer3 = dock.ArtLayers["awayRightScore"]
@@ -228,6 +235,7 @@ def hideAway():
   layer5.Visible = False
 
 def showHome():
+  dock.Activate()
   layer1 = dock.ArtLayers["homeLeftScore"]
   layer2 = dock.ArtLayers["homeLeftStat"]
   layer3 = dock.ArtLayers["homeRightScore"]
@@ -241,6 +249,7 @@ def showHome():
   layer5.Visible = True
 
 def showAway():
+  dock.Activate()
   layer1 = dock.ArtLayers["awayLeftScore"]
   layer2 = dock.ArtLayers["awayLeftStat"]
   layer3 = dock.ArtLayers["awayRightScore"]
@@ -252,4 +261,13 @@ def showAway():
   layer3.Visible = True
   layer4.Visible = True
   layer5.Visible = True
+
+def exportStats():
+  output_path = getPathOutput()  # Replace with your desired export location
+  png_options = win32com.client.Dispatch("Photoshop.PNGSaveOptions")
+  png_options.Interlaced = False  # Set to False for non-progressive PNG
+
+  doc.SaveAs(output_path, png_options, asCopy=True)
+  atemExport2(output_path)
+
 dock.Save()

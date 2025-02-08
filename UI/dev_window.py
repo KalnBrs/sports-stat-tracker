@@ -38,7 +38,7 @@ class dev_window(tk.Toplevel):
   def resetData(self):
     correctData = {"teams": {
       "team_name": {
-        "player": {
+        "1": {
           "1": 0,
           "2": 0,
           "3": 0,
