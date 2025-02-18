@@ -46,7 +46,10 @@ class Stats():
     if statID == 10:
       return data["teams"][self.trimed]["1"]["11"]
     if statID == 11:
-      return str(math.trunc((self.getFT(9) / (self.getFT(10) + self.getFT(9))) * 100))
+      try:
+        return str(math.trunc((self.getFT(9) / (self.getFT(10) + self.getFT(9))) * 100))
+      except:
+        return "0"
     if statID == 12:
       return str(self.getFT(9)) + "/" + str(self.getFT(10) + self.getFT(9))
 
@@ -58,7 +61,10 @@ class Stats():
     if statID == 6:
       return data["teams"][self.trimed]["1"]["4"]
     if statID == 7:
-      return str(math.trunc((self.getThree(5) / (self.getThree(6) + self.getThree(5))) * 100))
+      try:
+        return str(math.trunc((self.getThree(5) / (self.getThree(6) + self.getThree(5))) * 100))
+      except:
+        return "0"
     if statID == 8:
       return str(self.getThree(5)) + "/" + str(self.getThree(6) + self.getThree(5))
 
@@ -70,7 +76,10 @@ class Stats():
     if statID == 2:
       return data["teams"][self.trimed]["1"]["2"] + data["teams"][self.trimed]["1"]["4"]
     if statID == 3:
-      return str(math.trunc((self.getFieldGoal(1) / (self.getFieldGoal(2) + self.getFieldGoal(1))) * 100))
+      try:
+        return str(math.trunc((self.getFieldGoal(1) / (self.getFieldGoal(2) + self.getFieldGoal(1))) * 100))
+      except:
+        return "0"
     if statID == 4:
       return str(self.getFieldGoal(1)) + "/" + str(self.getFieldGoal(2) + self.getFieldGoal(1))
 

@@ -3,18 +3,24 @@ from PATH import *
 from Methods.functions import *
 from Methods.statObj import *
 import win32com.client
-from Methods.export import *
 
 pathToGraphic = getPath()
 
 app = win32com.client.Dispatch("Photoshop.Application")
 #Opens it on the desktop For Stats
+print(pathToGraphic)
 app.Open(pathToGraphic)
+global dock  # Allow updating the global variable
 # Opens it for changing 
 dock = app.ActiveDocument
 
+def ensure_document_open():
+  """Ensures the Photoshop document is open, reopens if necessary"""
+  app.Open(pathToGraphic) 
+  dock = app.ActiveDocument  # Reassign active document   
+
 def updateTimeHome():
-  dock.Activate()
+  ensure_document_open()
   gameData.homeTimeLeft -= 1
 
   layer1 = dock.ArtLayers["homeLeftStat"]
@@ -37,7 +43,7 @@ def updateTimeHome():
   timeOutLayer.Position = (571.0564902562039, 903.0732458712706)
 
 def updateTimeAway():
-  dock.Activate()
+  ensure_document_open()
   gameData.awayTimeLeft -= 1
   TOleft = gameData.awayTimeLeft
   
@@ -62,7 +68,7 @@ def updateTimeAway():
 
 # Send data to photoshop
 def shipHome(graphicLeft, graphicRight):
-  dock.Activate()
+  ensure_document_open()
   showHome()
   Home = Stats("home")
   dataOptions = loadOptions()
@@ -134,7 +140,7 @@ def shipHome(graphicLeft, graphicRight):
 
 
 def shipAway(graphicLeft, graphicRight):
-  dock.Activate()
+  ensure_document_open()
   showAway()
   Away = Stats("away")
   dataOptions = loadOptions()
@@ -207,7 +213,7 @@ def shipAway(graphicLeft, graphicRight):
 
 
 def hideHome():
-  dock.Activate()
+  ensure_document_open()
   layer1 = dock.ArtLayers["homeLeftScore"]
   layer2 = dock.ArtLayers["homeLeftStat"]
   layer3 = dock.ArtLayers["homeRightScore"]
@@ -221,7 +227,7 @@ def hideHome():
   layer5.Visible = False
 
 def hideAway():
-  dock.Activate()
+  ensure_document_open()
   layer1 = dock.ArtLayers["awayLeftScore"]
   layer2 = dock.ArtLayers["awayLeftStat"]
   layer3 = dock.ArtLayers["awayRightScore"]
@@ -235,7 +241,7 @@ def hideAway():
   layer5.Visible = False
 
 def showHome():
-  dock.Activate()
+  ensure_document_open()
   layer1 = dock.ArtLayers["homeLeftScore"]
   layer2 = dock.ArtLayers["homeLeftStat"]
   layer3 = dock.ArtLayers["homeRightScore"]
@@ -249,7 +255,7 @@ def showHome():
   layer5.Visible = True
 
 def showAway():
-  dock.Activate()
+  ensure_document_open()
   layer1 = dock.ArtLayers["awayLeftScore"]
   layer2 = dock.ArtLayers["awayLeftStat"]
   layer3 = dock.ArtLayers["awayRightScore"]
@@ -262,12 +268,4 @@ def showAway():
   layer4.Visible = True
   layer5.Visible = True
 
-def exportStats():
-  output_path = getPathOutput()  # Replace with your desired export location
-  png_options = win32com.client.Dispatch("Photoshop.PNGSaveOptions")
-  png_options.Interlaced = False  # Set to False for non-progressive PNG
-
-  doc.SaveAs(output_path, png_options, asCopy=True)
-  atemExport2(output_path)
-
-dock.Save()
+# dock.Save()

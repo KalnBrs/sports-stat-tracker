@@ -342,8 +342,8 @@ param:
 def add_color(color, colorValue):
   optionsList = loadOptions()
 
-  optionsList[options].append(color, 0)
-  optionsList[options][color] = colorValue
+  optionsList["options"].append(color, 0)
+  optionsList["options"][color] = colorValue
 
   with open("Data/options.json", "w") as f:
     f.write(json.dumps(optionsList, indent=2))

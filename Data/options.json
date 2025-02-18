@@ -1,7 +1,5 @@
 {
   "options": [
-    "Waunakee",
-    "Monona Grove",
     "Red",
     "Orange",
     "Yellow",
@@ -10,10 +8,7 @@
     "Purple"
   ],
   "color-values": {
-    "None": "#435058",
-    "Blue": "#0072BB",
-    "Monona Grove": "#9BDDFF",
-    "Waunakee": "#613395"
+    "None": "#435058"
   },
   "statPick": {
     "FG Made": 1,

@@ -13,7 +13,7 @@ class team_frame_away(tk.Toplevel):
   def __init__ (self, color):
     super().__init__()
     self.title(gameData.team_away)
-    self.geometry("500x135")
+    self.geometry("500x250")
     self.minsize(500, 135)
     self.configure(background = color)
     self.label_num_away = ttk.Label(self, text="Enter the number number of the player and pick the stat").pack()
@@ -135,7 +135,7 @@ class team_frame_home(tk.Toplevel):
   def __init__ (self, color):
     super().__init__()
     self.title(gameData.team_home)
-    self.geometry("500x135")
+    self.geometry("500x250")
     self.minsize(500, 135)
     self.configure(background = color)
     self.label_num_home = ttk.Label(self, text="Enter the number of the player and pick the stat").pack()
