@@ -10,8 +10,7 @@ This is a **basketball stat tracker** built as part of a **computer science clas
 
 ## Next Steps  
 The future development plans for this project include:  
-1. **Integration with Photoshop:** Automate changing Photoshop text variables using data from the stat tracker.  
-2. **Graphics Automation:** Fully automate the graphics generation process for **local AV basketball streams**.  
+1. Integrating different sports into the application
 
 ## Requirements  
 - Python 3.12.5  
