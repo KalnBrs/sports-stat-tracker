@@ -6,7 +6,8 @@ This is a **basketball stat tracker** built as part of a **computer science clas
 ## Features  
 - User-friendly interface for tracking basketball stats  
 - JSON-based data storage for simplicity and flexibility  
-- Built using Python with a UI library for enhanced user experience  
+- Built using Python with a UI library for enhanced user experience
+- Python - Photoshop integration and automatic graphic updating
 
 ## Next Steps  
 The future development plans for this project include:  
