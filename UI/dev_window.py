@@ -73,14 +73,9 @@ class dev_window(tk.Toplevel):
   def changeColorValue(self):
     dataOptions = loadOptions()
     code = self.colorEntry.get()
-    print(code)
 
     if code[0] == "#" and len(code) == 7:
-      print(dataOptions["color-values"])
-      print(self.clicked.get())
-      print(type(dataOptions["color-values"]))
       dataOptions["color-values"][self.clicked.get()] = code
-      print(dataOptions["color-values"])
     else:
       Messagebox.show_error(
         title="Error",
@@ -119,11 +114,7 @@ class add_color(tk.Toplevel):
       dataOptions["options"].insert(0, self.nameEntry.get())
 
     if code[0] == "#" and len(code) == 7:
-      print(dataOptions["color-values"])
-      print(self.nameEntry.get())
-      print(type(dataOptions["color-values"]))
       dataOptions["color-values"][self.nameEntry.get()] = code
-      print(dataOptions["color-values"])
     else:
       Messagebox.show_error(
         title="Error",

@@ -74,8 +74,6 @@ class team_frame_away(tk.Toplevel):
     playerC = check_player(gameData.team_away_trimed, "1")
     if playerC is True:
       stat_points_update("1", 2, gameData.team_away_trimed, "1")
-    else:
-      print("error 2")
 
   def three_point_made_away(self):
     playerC = check_player(gameData.team_away_trimed, "1")
@@ -198,8 +196,6 @@ class team_frame_home(tk.Toplevel):
     playerC = check_player(gameData.team_home_trimed, "1")
     if playerC is True:
       stat_points_update("1", 2, gameData.team_home_trimed, "1")
-    else:
-      print("error 2")
 
   def three_point_made_home(self):
     playerC = check_player(gameData.team_home_trimed, "1")

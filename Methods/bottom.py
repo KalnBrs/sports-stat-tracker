@@ -12,11 +12,16 @@ global doc1
 # Opens it for changing 
 doc1 = app.ActiveDocument
 
+"""
+Ensures the Photoshop document is open
+"""
 def ensure_document_open():
-  """Ensures the Photoshop document is open, reopens if necessary"""
   app.Open(pathToBottom) 
   doc1 = app.ActiveDocument  # Reassign active document   
 
+"""
+Updates the fouls and timeout layers based on the games foul and timeout satistiics
+"""
 def updateBottom():
   try:
     ensure_document_open()

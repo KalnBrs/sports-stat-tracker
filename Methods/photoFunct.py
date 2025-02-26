@@ -8,17 +8,25 @@ pathToGraphic = getPath()
 
 app = win32com.client.Dispatch("Photoshop.Application")
 #Opens it on the desktop For Stats
-print(pathToGraphic)
 app.Open(pathToGraphic)
 global dock  # Allow updating the global variable
 # Opens it for changing 
 dock = app.ActiveDocument
 
+"""
+Ensures the Photoshop document is open, reopens if necessary
+
+Returns: None 
+"""
 def ensure_document_open():
-  """Ensures the Photoshop document is open, reopens if necessary"""
   app.Open(pathToGraphic) 
   dock = app.ActiveDocument  # Reassign active document   
 
+"""
+Sets the layer for timeouts and updates the timeout satistic for the home team
+
+Returns: None 
+"""
 def updateTimeHome():
   ensure_document_open()
   gameData.homeTimeLeft -= 1
@@ -42,6 +50,11 @@ def updateTimeHome():
   timeOutLayer.Size = 72
   timeOutLayer.Position = (571.0564902562039, 903.0732458712706)
 
+"""
+Sets the layer for timeouts and updates the timeout satistic for the away team
+
+Returns: None 
+"""
 def updateTimeAway():
   ensure_document_open()
   gameData.awayTimeLeft -= 1
@@ -66,7 +79,15 @@ def updateTimeAway():
   timeOutLayer.Size = 72
   timeOutLayer.Position = (1330.0564902562044, 901.0732458712706)
 
-# Send data to photoshop
+"""
+Updates the photoshop layers based on the satistic chosen and repositions based on the length of that satistic for the home team
+
+Param:
+  String graphicLeft: The name of the left statistic
+  String graphicRight: The name of the right statistic 
+
+Returns: None 
+"""
 def shipHome(graphicLeft, graphicRight):
   ensure_document_open()
   showHome()
@@ -138,7 +159,15 @@ def shipHome(graphicLeft, graphicRight):
     text_layer_stat.Position = (firstPos+26, 895.0732458712706)
     text_layer_text.Position = (secondPos+50, 895.0960563801272)
 
+"""
+Updates the photoshop layers based on the satistic chosen and repositions based on the length of that satistic for the away team
 
+Param:
+  String graphicLeft: The name of the left statistic
+  String graphicRight: The name of the right statistic 
+
+Returns: None 
+"""
 def shipAway(graphicLeft, graphicRight):
   ensure_document_open()
   showAway()
@@ -211,7 +240,11 @@ def shipAway(graphicLeft, graphicRight):
     text_layer_stat.Position = (firstPos+26, 895.0732458712706)
     text_layer_text.Position = (secondPos+50, 895.0960563801272)
 
+"""
+Hides the layers for the home team
 
+Returns: None
+"""
 def hideHome():
   ensure_document_open()
   layer1 = dock.ArtLayers["homeLeftScore"]
@@ -226,6 +259,11 @@ def hideHome():
   layer4.Visible = False
   layer5.Visible = False
 
+"""
+Hides the layers for the away team
+
+Returns: None 
+"""
 def hideAway():
   ensure_document_open()
   layer1 = dock.ArtLayers["awayLeftScore"]
@@ -240,6 +278,11 @@ def hideAway():
   layer4.Visible = False
   layer5.Visible = False
 
+"""
+Shows the home layers 
+
+Returns: None 
+"""
 def showHome():
   ensure_document_open()
   layer1 = dock.ArtLayers["homeLeftScore"]
@@ -254,6 +297,11 @@ def showHome():
   layer4.Visible = True
   layer5.Visible = True
 
+"""
+Shows the away layers
+
+Returns: None
+"""
 def showAway():
   ensure_document_open()
   layer1 = dock.ArtLayers["awayLeftScore"]
@@ -268,4 +316,4 @@ def showAway():
   layer4.Visible = True
   layer5.Visible = True
 
-# dock.Save()
+dock.Save()

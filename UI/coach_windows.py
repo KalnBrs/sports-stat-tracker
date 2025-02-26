@@ -61,9 +61,6 @@ class coach_window(tk.Toplevel):
       elif coach_team_trimed not in data["teams"]:
         messagebox.showerror(title="Error", message="Team not found")
         self.entry_team.delete(0, tk.END)
-      else:
-        #No input
-        print("error 11")
     
 
 class Coach_Choose(tk.Toplevel):

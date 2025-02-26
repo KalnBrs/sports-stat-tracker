@@ -5,7 +5,6 @@ from tkinter import messagebox
 import ttkbootstrap as ttk
 from collections import deque
 
-#Function to use for Procedure
 """
 Checks if player is in data and loops until the player is in the data 
 

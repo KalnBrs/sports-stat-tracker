@@ -71,8 +71,6 @@ class search_team_window(tk.Toplevel):
       replace_stats(team_search)
     elif team_search not in data["teams"]:
       messagebox.showerror(title="No team found", message="No team found")
-    else:
-      print("error Search_team_window")
 
 #Creates the window for the search for a player
 class search_player_window(tk.Toplevel):
@@ -120,8 +118,6 @@ class search_player_window(tk.Toplevel):
       elif ask_num not in data["teams"][team_trimed]:
         messagebox.showinfo(title="Messaage", message="Player not found")
         self.entry_num.delete(0, tk.END)
-      else:
-        print("error 111")
     except KeyError:
       messagebox.showerror(title="Error", message="Team not found")
 
